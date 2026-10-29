@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo Evolusi Gambar | Track AI, ML, dan Optimasi</title>
+  <meta name="description" content="Demo hill climbing: 40 segitiga transparan berubah sedikit demi sedikit sampai menyerupai gambar target.">
+  <meta name="theme-color" content="#0A2540">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+  <a class="skip" href="#isi">Lewati ke isi</a>
+
+  <header class="kepala">
+    <div class="isi">
+      <p class="label">Demo Pertemuan 0</p>
+      <h1>Evolusi Gambar</h1>
+      <p>Satu aturan sederhana, diulang puluhan ribu kali.</p>
+    </div>
+  </header>
+
+  <main id="isi">
+    <noscript><div class="catatan"><p>Demo ini memerlukan JavaScript. Aktifkan JavaScript di peramban, lalu muat ulang halaman.</p></div></noscript>
+
+    <p>Program memegang 40 segitiga transparan. Pada setiap langkah ia <strong>mengubah satu hal kecil</strong> pada satu segitiga (menggeser sudut, mengubah warna, atau mengubah transparansi), lalu menggambar ulang dan menghitung <strong>galat</strong>, yaitu seberapa jauh gambarnya dari target. Jika galat <em>tidak bertambah</em>, perubahan disimpan. Jika bertambah, perubahan dibuang. Itulah algoritma <em>hill climbing</em> yang akan kita pelajari penuh di Pekan 9.</p>
+
+    <div class="kendali">
+      <button type="button" id="tombol-main">Mulai</button>
+      <button type="button" id="tombol-ulang">Ulang dengan acak baru</button>
+      <label for="kecepatan">Kecepatan</label>
+      <select id="kecepatan">
+        <option value="pelan">Pelan</option>
+        <option value="sedang" selected>Sedang</option>
+        <option value="cepat">Cepat</option>
+      </select>
+    </div>
+
+    <div class="pasangan">
+      <figure>
+        <canvas id="kanvas-target" width="64" height="64" role="img" aria-label="Gambar target: langit biru tua, matahari emas, dan dua bukit gelap"></canvas>
+        <figcaption>Target</figcaption>
+      </figure>
+      <figure>
+        <canvas id="kanvas-terbaik" width="64" height="64" role="img" aria-label="Gambar hasil pencarian saat ini"></canvas>
+        <figcaption>Hasil saat ini</figcaption>
+      </figure>
+    </div>
+
+    <dl class="statistik">
+      <dt>Evaluasi terpakai</dt><dd><span id="s-iter">0</span> dari 30.000</dd>
+      <dt>Perubahan diterima</dt><dd id="s-terima">0</dd>
+      <dt>Galat sekarang</dt><dd id="s-galat">0</dd>
+      <dt>Perbaikan dari awal</dt><dd id="s-baik">0%</dd>
+      <dt>Nomor acak (seed)</dt><dd id="s-seed">0</dd>
+    </dl>
+    <p id="umum" class="sr-only" aria-live="polite"></p>
+
+    <div class="kurva">
+      <canvas id="kanvas-kurva" width="480" height="200" role="img" aria-label="Grafik galat terhadap jumlah evaluasi. Galat turun cepat di awal lalu melambat."></canvas>
+      <p class="kecil"><small>Sumbu datar: jumlah evaluasi. Sumbu tegak: galat (semakin rendah semakin mirip target).</small></p>
+    </div>
+
+    <h2>Untuk didiskusikan</h2>
+    <ol>
+      <li>Di bagian mana kurva turun cepat, dan kapan melambat? Apa artinya bagi anggaran evaluasi?</li>
+      <li>Tekan <em>Ulang dengan acak baru</em> beberapa kali. Apakah hasil akhirnya selalu sama? Apa yang berbeda?</li>
+      <li>Program hanya pernah menerima perubahan yang tidak memperburuk. Apa yang mungkin salah dengan aturan itu? Kita kembali ke pertanyaan ini di Pekan 9.</li>
+      <li>Berapa evaluasi yang kamu perkirakan dibutuhkan untuk model dengan satu juta parameter?</li>
+    </ol>
+
+    <p><a class="tombol sekunder" href="index.html">Kembali ke Panduan Peserta</a> <a class="tombol sekunder" href="slide.html#4">Kembali ke slide</a></p>
+  </main>
+
+  <footer>
+    <p>Gagasan awal: pendekatan gambar dengan poligon dan strategi evolusi yang dipopulerkan Roger Alsing, dan diilustrasikan pula di buku Essentials of Metaheuristics. Kode demo ini ditulis tersendiri untuk kelas.</p>
+  </footer>
+
+  <script src="js/demo.js"></script>
+</body>
+</html>

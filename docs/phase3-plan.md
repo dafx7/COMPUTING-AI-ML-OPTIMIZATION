@@ -8,7 +8,7 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 
 **Sources and page references.**
 - UDL = *Understanding Deep Learning* (Prince), PDF release v5.0.3, 9 Feb 2026, identical to the file in the repo (SHA-256 checked). Pages are PDF document pages from its contents. Notebook names are from the book site's list of 68 notebooks.
-- Luke = *Essentials of Metaheuristics*. **The file in the repo is the Zeroth Edition, Online Version 0.5, October 2009 (229 pp).** Its license page says CC BY-ND 3.0 US. It is not the current edition. Every Luke page number below refers to that file and must be re-mapped when the current PDF is uploaded.
+- Luke = *Essentials of Metaheuristics*, **Second Edition, Online Version 2.4, January 2026 (263 pp)**, the file `Essentials (1).pdf` in the repo. Its license page says CC BY-ND 3.0 US and, in the 2.4 summary, forbids translation as well as modification. Page numbers are document pages from its contents. The older file `Essentials.pdf` (2009, v0.5) is superseded and should be deleted from the repo.
 - D2L = *Dive into Deep Learning* v1.0.3, section titles verified on d2l.ai (used only as supplement in W6 and W12).
 - Clever = *Clever Algorithms* (Brownlee), used for ACO in W11.
 
@@ -104,7 +104,7 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 - **Source:** UDL ch6 §6.3-6.5 (pp 86-91), Notebooks 6.3-6.5. Supplement D2L §2.1, §2.5, §3.5, §5.2 (CC BY-SA 4.0, read online).
 - **Hands-on:** optimizer race on the Rosenbrock function, the same function the metaheuristics use in W9-W10.
 - **Deliverable:** NumPy-versus-PyTorch comparison plus a training loop with a planted bug (forgotten zero_grad).
-- **Class adds:** one test function, many tools. Luke §11.2 test problems (pp 201-205) give the shared benchmark set.
+- **Class adds:** one test function, many tools. Luke §11.2 test problems (pp 221-226) give the shared benchmark set.
 - **AI:** allowed.
 - **Feeds project:** PyTorch skeleton for team code.
 
@@ -127,7 +127,7 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 
 ### Week 9. Single-state metaheuristics
 - **Can do:** define a Tweak for a real vector, a bitstring and a permutation. Implement hill climbing and simulated annealing from pseudocode. Explain what temperature does. Run 20 seeds and report median and spread at equal budget. Say where SA beats hill climbing and where gradient descent wins.
-- **Source:** Luke §1 (pp 11-14), ch2 §2.1-2.4 (pp 15-24), §2.5-2.6 optional, §11.1.1 and the first part of §11.1.2 (pp 193-196). Test functions from §11.2.2.
+- **Source:** Luke §1 (pp 13-16), ch2 §2.1-2.4 (pp 17-26), §2.5-2.6 optional, §11.1.1 and the first part of §11.1.2 (pp 213-216). Test functions from §11.2.2 (pp 222-226).
 - **Hands-on:** "Arena": random search, hill climbing, SA and GD on Rosenbrock and Rastrigin, same evaluation budget.
 - **Deliverable:** SA notebook plus the arena table (median over 20 seeds). Project proposal due.
 - **Class adds:** gradient-free search is the default when the objective is a black box (simulation, accuracy, schedule violations). Budget accounting: count function evaluations.
@@ -136,7 +136,7 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 
 ### Week 10. Population metaheuristics
 - **Can do:** implement a bitstring GA and a real-valued ES or GA. Explain selection pressure, the roles of crossover and mutation, and elitism. Implement PSO in about 15 lines and name its three terms. Run the arena with GA, PSO and DE against SA, random search and GD.
-- **Source:** Luke ch3 §3.1-3.2 (pp 31-42), §3.3.1 (p 43), §3.4-3.6 (pp 50-54). Skip §3.3.3 tree GP and §3.3.5 scatter search.
+- **Source:** Luke ch3 §3.1-3.2 (pp 33-45), §3.3.1 (p 46), §3.4 DE (p 54), §3.5 PSO (pp 55-58). Skip §3.3.3 tree GP and §3.3.5 scatter search.
 - **Hands-on:** Arena II, plus the GA/PSO side-by-side site.
 - **Deliverable:** GA and PSO notebook passing provided unit tests, the arena table, and 5 sentences on when to pick which.
 - **Class adds:** no overall winner (no free lunch). Evaluations = population x generations.
@@ -145,7 +145,7 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 
 ### Week 11. Representation and combinatorial problems (supplement)
 - **Can do:** choose and justify an encoding for knapsack, scheduling and routing. Handle constraints by penalty, repair or a safe encoding. Implement swap and inversion mutations and order crossover on permutations. Run SA, GA and Ant System on a 20 to 40 city TSP at equal budget.
-- **Source:** Luke ch4 §4.1 (pp 57-60), §8.1 (pp 140-142), §8.3 ACO (pp 144-150), Clever swarm chapter (Ant System recipe). Luke 2009 has no permutation operators. The class supplies them.
+- **Source:** Luke ch4 §4.1 (pp 61-65), §8.1 (pp 148-150), §8.3 ACO (pp 152-158), Clever swarm chapter (Ant System recipe). Luke 2.4 has no section on permutation operators (searched the text). The class supplies them.
 - **Hands-on:** TSP arena with a starter skeleton.
 - **Deliverable:** encoding decision table for 3 problems plus the TSP comparison. **Project baseline due.**
 - **Class adds:** representation shapes the landscape. Three questions for any encoding: does every string decode to a valid solution, do small changes make small effects, is the space a sensible size.
@@ -154,7 +154,7 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 
 ### Week 12. Hybrids: optimization inside ML (supplement, Checkpoint 2)
 - **Can do:** frame hyperparameter tuning as black-box optimization (search space, objective = validation loss, budget = trials). Compare random search, GA or PSO, and successive halving at equal training runs. Do GA feature selection with a cheap model. Explain the memetic idea (GA plus local search).
-- **Source:** Luke §3.3.4 (p 47), §9.2 intro (pp 156-159). D2L ch19 §19.1, §19.3, §19.4 (CC BY-SA 4.0). UDL §8.5.
+- **Source:** Luke §3.3.4 hybrid optimization (pp 49-52, broadened in 2.4), §9.2 intro (pp 165-167), optional §9.2.3 (pp 173-180, parametric-distribution EDAs, CMA-ES is discussed there). D2L ch19 §19.1, §19.3, §19.4 (CC BY-SA 4.0). UDL §8.5.
 - **Hands-on:** a tuning tournament on the W6 network (12-trial budget). Instructor demo (25 min): the learned-simulator planner with random shooting versus GA/SA/CEM-style search. **Untested at student scale. I should prototype it before this week.**
 - **Deliverable:** one hybrid experiment with at least 10 seeds.
 - **Checkpoint 2:** team prototype review (about 12 min per team, 3 to 4 teams per mentor) while others run the tournament.
@@ -198,7 +198,7 @@ Two parallel tracks of 5 teams (8 min demo plus 4 min Q&A, 60 min), then a 30-mi
 - **Generative models** (GAN, VAE, flows, diffusion; UDL ch15-18): heavy math, little tie to optimization. A mention in the W14 map slide.
 - **Reinforcement learning as a topic** (UDL ch19): only as optional reading for the world-model project.
 - **GNNs, Bayesian optimization, Gaussian processes:** out of scope.
-- **Luke ch5-7 and ch10, §4.3-4.6:** parallel methods, coevolution, multiobjective, policy optimization, GP. Multiobjective (ch7, pp 125-137) is an optional extension for strong teams.
+- **Luke ch5-7 and ch10, §4.3-4.6:** parallel methods, coevolution, multiobjective, policy optimization, GP. Multiobjective (ch7, pp 133-145) is an optional extension for strong teams.
 - **UDL ch20, §8.4 double descent, the math appendices:** reference only.
 - **VLA and frontier world models:** no runnable path on student hardware. One slide in W14.
 - **Standalone data-quality, fairness and deployment weeks:** folded into W7 (leakage), W13 to W15 (deploy), W15 (audit, data statement, model card). I judge this enough for beginners, and a standalone fairness week would need a chapter I could not find at beginner level.
@@ -218,7 +218,7 @@ I recommend **C**, as a separate 150-minute session.
 ### Agenda (150 min)
 | Min | Block |
 |---|---|
-| 0-10 | Welcome and why: ML grounded in optimization. Two mentor-built demos |
+| 0-10 | Welcome and why: ML grounded in optimization. One demo (Evolusi Gambar) running while the mentor speaks |
 | 10-20 | Optional ungraded pretest, 12 questions, paper, anonymous code names. Used to plan clinics only |
 | 20-35 | How the course works (see below) |
 | 35-45 | Break |
@@ -263,9 +263,9 @@ Colab opens and saves to Drive; GitHub account and username given to mentors; bo
 - *Risks:* game dynamics and mental load, hard UI on phones.
 
 ## 6. Open items and unverified claims
-- **Luke's edition.** The repo file is the 2009 v0.5. Upload the current edition from the author's page. Search results conflict on its version number (2.2 versus 2.4).
+- **Luke's edition is resolved:** Second Edition, Online Version 2.4, January 2026, read directly from the repo file.
 - **Attendance threshold, communication channel, and certificate policy** are not given to me.
 - **Mathematical background** of the students is assumed (derivatives, vectors, probability basics). Confirm.
 - **Free-tier terms** of Hugging Face Spaces and Streamlit Community Cloud, and HF course ch9 content and license, are unverified.
 - **Untested:** UDL notebooks on current Colab, torchvision and CLIP-style models on Colab free, the world-model planner demo, and all time estimates.
-- The two PDFs in the repo can be redistributed unmodified under their licenses (UDL: non-commercial with attribution, Luke: with attribution). Linking to the official sources keeps students on current versions and keeps the repo small. Your call.
+- The PDFs in the repo can be redistributed unmodified under their licenses (UDL: non-commercial with attribution, Luke: with attribution). Delete the superseded 2009 `Essentials.pdf`. Linking to the official sources keeps students on current versions and keeps the repo small. Your call.

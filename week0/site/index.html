@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pertemuan 0: Panduan Peserta | Track AI, ML, dan Optimasi</title>
+  <meta name="description" content="Panduan peserta Pertemuan 0 untuk Track AI, ML, dan Optimasi, Advance Study Group, Computing Laboratory, Fakultas Informatika, Telkom University.">
+  <meta name="theme-color" content="#0A2540">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#isi">Lewati ke isi</a>
+
+  <header class="kepala">
+    <div class="isi">
+      <p class="label">Advance Study Group · Computing Laboratory · Fakultas Informatika · Telkom University</p>
+      <h1>Pertemuan 0: Panduan Peserta</h1>
+      <p>Track AI, ML, dan Optimasi. Baca halaman ini sebelum Pertemuan 1.</p>
+    </div>
+  </header>
+
+  <main id="isi">
+    <p>Halaman ini memuat cara kerja kelas, penilaian, kebijakan alat AI, dan persiapan teknis. Isinya juga dibahas langsung pada sesi kickoff.</p>
+
+    <p>
+      <a class="tombol" href="slide.html">Buka slide kickoff</a>
+      <a class="tombol sekunder" href="demo.html">Coba demo Evolusi Gambar</a>
+    </p>
+
+    <nav class="toc" aria-label="Daftar isi">
+      <strong>Daftar isi</strong>
+      <ol>
+        <li><a href="#tentang">Tentang kelas ini</a></li>
+        <li><a href="#ritme">Ritme dan beban mingguan</a></li>
+        <li><a href="#peta">Peta 16 pekan</a></li>
+        <li><a href="#nilai">Penilaian</a></li>
+        <li><a href="#proyek">Proyek akhir</a></li>
+        <li><a href="#ai">Kebijakan alat AI</a></li>
+        <li><a href="#hadir">Kehadiran</a></li>
+        <li><a href="#buku">Dua buku dan cara mendapatkannya</a></li>
+        <li><a href="#siap">Persiapan teknis</a></li>
+        <li><a href="#tanya">Pertanyaan umum</a></li>
+        <li><a href="#p1">Untuk Pertemuan 1</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="tentang">1. Tentang kelas ini</h2>
+    <p>Track ini mengajarkan pembelajaran mesin (ML) dengan fondasi optimasi. Setiap model yang kamu latih adalah sebuah masalah optimasi: ada <strong>fungsi tujuan</strong>, <strong>ruang pencarian</strong>, dan <strong>anggaran</strong> evaluasi. Dari sana kelas bergerak ke dua arah. Arah pertama adalah gradient descent dan jaringan saraf, untuk masalah yang mulus. Arah kedua adalah metaheuristik (simulated annealing, algoritma genetika, PSO, ACO), untuk masalah yang tidak punya gradien. Di tengah kelas, keduanya bertemu pada proyek tim.</p>
+
+    <p>Kamu tidak perlu pengetahuan ML sebelumnya, dan tidak perlu bisa Python. Kamu perlu terbiasa memrogram, yang sudah kamu dapat di kuliah pemrograman semester pertama.</p>
+
+    <h3>Di akhir pekan ke-16 kamu dapat:</h3>
+    <ol>
+      <li>Merumuskan sebuah masalah sebagai masalah optimasi: parameter, fungsi tujuan, dan batasan.</li>
+      <li>Melatih dan men-debug model yang kamu tulis sendiri, dengan NumPy lalu PyTorch.</li>
+      <li>Mengevaluasi model dengan jujur: pembagian data, kebocoran data, dan metrik yang tepat.</li>
+      <li>Menyelesaikan masalah tanpa gradien dengan SA, algoritma genetika, PSO, dan ACO, lalu menggabungkannya dengan ML.</li>
+      <li>Memakai model terlatih (CNN, transformer, LLM) secara kritis.</li>
+      <li>Merilis demo yang berjalan di alamat publik bersama timmu.</li>
+    </ol>
+
+    <h2 id="ritme">2. Ritme dan beban mingguan</h2>
+    <table>
+      <thead><tr><th scope="col">Bagian</th><th scope="col">Isi</th><th scope="col">Perkiraan waktu</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Baca</th><td>10 sampai 20 halaman dari buku, dengan panduan baca berbahasa Indonesia (daftar halaman, istilah, pertanyaan pemandu)</td><td>1,5 sampai 2 jam</td></tr>
+        <tr><th scope="row">Kelas</th><td>Kuis pembuka tanpa perangkat, contoh langsung, latihan berpasangan, tiket keluar</td><td>2 jam, tatap muka</td></tr>
+        <tr><th scope="row">Latihan</th><td>Satu notebook Colab dan satu pertanyaan pemahaman</td><td>1,5 sampai 2 jam</td></tr>
+      </tbody>
+    </table>
+    <p>Totalnya sekitar <strong>5 sampai 6 jam per pekan</strong>. Angka ini perkiraan mentor. Mulai Pekan 9, sebagian waktu latihan berpindah ke proyek tim (sekitar 2,5 jam per pekan). Jika bebanmu terasa jauh lebih besar dari ini, sampaikan kepada mentor.</p>
+
+    <h2 id="peta">3. Peta 16 pekan</h2>
+    <p>Satu bab buku, kurang lebih satu pekan. Nomor bab dan bagian akan dibagikan lewat panduan baca setiap pekan.</p>
+    <table>
+      <thead><tr><th scope="col">Pekan</th><th scope="col">Tema dan bacaan utama</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>Belajar sama dengan meminimalkan loss <small>UDL bab 1.1 dan bab 2</small></td></tr>
+        <tr><th scope="row">2</th><td>Gradient descent <small>UDL bab 6.1 dan 6.2</small></td></tr>
+        <tr><th scope="row">3</th><td>Loss untuk klasifikasi <small>UDL bab 5</small></td></tr>
+        <tr><th scope="row">4</th><td>Jaringan saraf <small>UDL bab 3 dan 4</small></td></tr>
+        <tr><th scope="row">5</th><td>Backpropagation <small>UDL bab 7</small></td></tr>
+        <tr><th scope="row">6</th><td>PyTorch, momentum, dan Adam <small>UDL bab 6.3 sampai 6.5, bahan tambahan D2L</small></td></tr>
+        <tr><th scope="row">7</th><td>Generalisasi dan evaluasi yang jujur <small>UDL bab 8 dan sebagian bab 9</small></td></tr>
+        <tr><th scope="row">8</th><td><strong>Pos pemeriksaan 1</strong>: cek lisan individu, tim dibentuk</td></tr>
+        <tr><th scope="row">9</th><td>Metaheuristik satu solusi: hill climbing, simulated annealing <small>Luke bab 1 dan 2</small></td></tr>
+        <tr><th scope="row">10</th><td>Metaheuristik populasi: algoritma genetika, PSO <small>Luke bab 3</small></td></tr>
+        <tr><th scope="row">11</th><td>Representasi dan masalah kombinatorial: ACO, TSP <small>Luke bab 4 dan 8, bahan tambahan Clever Algorithms</small></td></tr>
+        <tr><th scope="row">12</th><td>Hibrida: optimasi di dalam ML. <strong>Pos pemeriksaan 2</strong>: tinjauan prototipe tim <small>Luke 3.3.4 dan 9.2, bahan tambahan D2L bab 19</small></td></tr>
+        <tr><th scope="row">13</th><td>Bias induktif (inductive bias) dan transfer learning <small>UDL bab 10 dan 11</small></td></tr>
+        <tr><th scope="row">14</th><td>Transformer dan LLM <small>UDL bab 12</small></td></tr>
+        <tr><th scope="row">15</th><td>Data, tanggung jawab, dan deployment. Cek lisan individu <small>UDL bab 1.4, notebook 21.1 dan 21.2</small></td></tr>
+        <tr><th scope="row">16</th><td>Hari demo proyek</td></tr>
+      </tbody>
+    </table>
+    <p>UDL adalah <em>Understanding Deep Learning</em>. Luke adalah <em>Essentials of Metaheuristics</em>. Keduanya dijelaskan di bagian 8.</p>
+
+    <h2 id="nilai">4. Penilaian</h2>
+    <table>
+      <thead><tr><th scope="col">Komponen</th><th scope="col">Bobot</th><th scope="col">Keterangan</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Latihan mingguan</th><td>40%</td><td>Dinilai dari kelengkapan notebook dan satu pertanyaan pemahaman</td></tr>
+        <tr><th scope="row">Cek lisan</th><td>10%</td><td>Pekan 8, individu (5%). Pekan 12, tinjauan prototipe tim (5%)</td></tr>
+        <tr><th scope="row">Proyek akhir</th><td>50%</td><td>Nilai tim 30%, cek lisan individu 20%</td></tr>
+      </tbody>
+    </table>
+    <p>Cek lisan pendek (sekitar 7 menit) meminta kamu menjelaskan kodemu sendiri dan memprediksi hasil perubahan kecil. Tujuannya memastikan pemahaman setiap orang, apa pun alat yang dipakai untuk menulis kode.</p>
+
+    <h2 id="proyek">5. Proyek akhir</h2>
+    <ul>
+      <li>Tim 3 orang (2 orang bila jumlah ganjil). Tim dibentuk mentor di Pekan 8 dengan mempertimbangkan survei keterampilan singkat.</li>
+      <li>Setiap proyek berisi <strong>model ML</strong> dan <strong>lapisan optimasi</strong> yang benar-benar menentukan hasil. Lapisan optimasi dibandingkan dengan sedikitnya satu pembanding (misalnya pencarian acak) pada anggaran evaluasi yang sama, dengan sedikitnya 10 kali percobaan. Hasil yang kalah dari pembanding tetap dapat nilai bagus bila analisisnya jujur dan tajam.</li>
+      <li>Hasil akhir: demo di alamat publik, repositori dengan README, dan catatan teknis 2 sampai 3 halaman berbahasa Indonesia yang memuat satu kasus kegagalan.</li>
+      <li>Hanya data terbuka atau data sintetis. Tidak boleh ada data pribadi.</li>
+      <li>Jalur waktu: proposal Pekan 9, baseline Pekan 11, tinjauan prototipe Pekan 12, deploy percobaan Pekan 13, versi awal Pekan 14, cek lisan Pekan 15, demo Pekan 16.</li>
+    </ul>
+
+    <h2 id="ai">6. Kebijakan alat AI</h2>
+    <p>Kamu boleh memakai alat AI apa pun, kapan pun, untuk latihan maupun proyek. Tidak ada yang mencatat pemakaianmu. Tiga hal tetap berlaku:</p>
+    <ol>
+      <li>Kuis pembuka dan cek lisan dilakukan <strong>tanpa perangkat</strong>.</li>
+      <li>Tujuh pekan memuat tugas <strong>verifikasi asisten</strong>: kamu meminta jawaban dari asisten AI, lalu memeriksanya dengan cara yang kita pelajari (pemeriksaan gradien, penelusuran manual, daftar periksa evaluasi).</li>
+      <li>Kamu bertanggung jawab atas pekerjaanmu dan harus dapat menjelaskannya.</li>
+    </ol>
+    <div class="catatan"><p>Alasannya praktis. Asisten AI dapat menulis kode pelatihan yang tampak benar tetapi keliru, misalnya data uji yang bocor ke data latih. Orang yang belum memahami dasarnya tidak akan melihat kekeliruan itu.</p></div>
+
+    <h2 id="hadir">7. Kehadiran</h2>
+    <!-- KONFIRMASI SEBELUM DIPUBLIKASIKAN: ambang kehadiran di bawah ini adalah usulan, belum diputuskan koordinator. -->
+    <p>Kehadiran menjadi syarat dan tidak dihitung sebagai komponen nilai. Usulan ambang: minimal <strong>13 dari 16 pertemuan</strong> (Pertemuan 0 tidak dihitung). Jika kamu tidak dapat hadir, kabari mentor sebelum kelas dan kerjakan materi pekan itu sendiri.</p>
+
+    <h2 id="buku">8. Dua buku dan cara mendapatkannya</h2>
+    <p>Kedua buku berbahasa Inggris dan gratis secara sah dari penulisnya. Unduh hanya dari tautan resmi di bawah. Hindari salinan dari situs lain, karena sering usang atau tidak lengkap. Setiap pekan mentor menerbitkan panduan baca berbahasa Indonesia sebagai komentar yang ditulis sendiri oleh mentor. Panduan itu tidak menerjemahkan buku.</p>
+
+    <h3>Understanding Deep Learning (UDL)</h3>
+    <ul>
+      <li>Penulis: Simon J. D. Prince. Diterbitkan MIT Press, Desember 2023. Kelas memakai PDF rilis v5.0.3 (Februari 2026).</li>
+      <li>Unduh: <a href="https://udlbook.github.io/udlbook/">udlbook.github.io/udlbook</a> (tombol <em>Download full PDF</em>) atau <a href="https://github.com/udlbook/udlbook/releases">halaman rilis di GitHub</a>.</li>
+      <li>Lisensi CC BY-NC-ND 4.0: boleh dibaca dan dibagikan utuh, tanpa perubahan, untuk tujuan nonkomersial dengan menyebut penulis. Dilarang mengubah atau menerjemahkan.</li>
+      <li>Buku ini juga punya notebook Python yang berjalan di Colab; mentor akan menunjukkan yang dipakai.</li>
+    </ul>
+
+    <h3>Essentials of Metaheuristics (Luke)</h3>
+    <ul>
+      <li>Penulis: Sean Luke. Edisi kedua. Kelas memakai versi daring 2.4 (Januari 2026).</li>
+      <li>Unduh: <a href="https://people.cs.gmu.edu/~sean/book/metaheuristics/">halaman buku di situs penulis</a>.</li>
+      <li>Lisensi CC BY-ND 3.0 AS: boleh dibagikan utuh dengan menyebut penulis. Dilarang mengubah, menerjemahkan, atau menyusun karya turunan.</li>
+      <li>Periksa halaman judul PDF: tertulis <em>Online Version 2.4</em>. Nomor halaman dalam panduan baca mengikuti versi ini.</li>
+    </ul>
+
+    <p>Nomor halaman yang disebut dalam panduan adalah nomor <strong>yang tercetak pada halaman</strong>. Di penampil PDF, tambahkan <strong>14</strong> untuk UDL (halaman cetak 17 ada di halaman PDF 31) dan <strong>2</strong> untuk Luke versi 2.4 (halaman cetak 25 ada di halaman PDF 27).</p>
+
+    <h2 id="siap">9. Persiapan teknis</h2>
+    <p>Total sekitar 45 menit. Yang belum selesai akan dibantu di stasiun persiapan pada sesi kickoff.</p>
+    <ul class="cek">
+      <li>
+        <input type="checkbox" id="c1">
+        <label for="c1"><strong>Akun Google dan Colab</strong> <span class="waktu">(10 menit)</span><br>
+        Buka <a href="https://colab.research.google.com">colab.research.google.com</a> dan masuk dengan akun Google. Buat notebook baru, ketik <code>print("halo")</code> pada sel, lalu tekan <code>Shift + Enter</code>. Tulisan <em>halo</em> harus muncul di bawah sel.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c2">
+        <label for="c2"><strong>Akun GitHub</strong> <span class="waktu">(10 menit)</span><br>
+        Daftar gratis di <a href="https://github.com">github.com</a> dengan email yang aktif. Mengaktifkan autentikasi dua langkah sangat disarankan. Catat <em>username</em>-mu untuk diberikan kepada mentor.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3">
+        <label for="c3"><strong>Unduh kedua buku</strong> <span class="waktu">(10 menit)</span><br>
+        Dari tautan resmi di bagian 8. Simpan di laptop atau ponsel agar dapat dibaca tanpa internet.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c4">
+        <label for="c4"><strong>Opsional: pemanasan Python</strong> <span class="waktu">(sekitar 30 menit)</span><br>
+        Baca bab 3 sampai 5 dari <a href="https://jakevdp.github.io/WhirlwindTourOfPython/"><em>A Whirlwind Tour of Python</em></a> (lisensi CC0), ditulis untuk orang yang sudah memrogram dalam bahasa lain.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c5">
+        <label for="c5"><strong>Opsional: Python di laptop</strong><br>
+        Tidak wajib. Colab sudah cukup untuk seluruh kelas.</label>
+      </li>
+    </ul>
+
+    <h3>Lembar kerja Pertemuan 0 (dikerjakan saat sesi)</h3>
+    <p>Dua notebook akan dikerjakan berpasangan di kelas. Kamu boleh membukanya lebih dulu.</p>
+    <ul>
+      <li><a href="https://colab.research.google.com/github/dafx7/COMPUTING-AI-ML-OPTIMIZATION/blob/main/week0/notebooks/01_python_untuk_programmer_go.ipynb">Python untuk programmer Go</a></li>
+      <li><a href="https://colab.research.google.com/github/dafx7/COMPUTING-AI-ML-OPTIMIZATION/blob/main/week0/notebooks/02_optimizer_20_baris.ipynb">Optimizer 20 baris</a></li>
+    </ul>
+
+    <h2 id="tanya">10. Pertanyaan umum</h2>
+    <details>
+      <summary>Saya tidak punya laptop. Apakah bisa ikut?</summary>
+      <p>Bisa. Beri tahu mentor sebelum Pertemuan 0 agar kamu dipasangkan dengan teman yang membawa laptop. Colab berjalan di peramban. Ponsel cukup untuk membaca buku, tetapi tidak nyaman untuk mengerjakan notebook.</p>
+    </details>
+    <details>
+      <summary>Saya belum pernah memakai Python.</summary>
+      <p>Kelas dirancang untuk keadaan itu. Pertemuan 0 membahas Python dari sudut pandang programmer Go, dan lembar kerjanya memberi padanan Go ke Python.</p>
+    </details>
+    <details>
+      <summary>Seberapa banyak matematika yang dipakai?</summary>
+      <p>Turunan, vektor dan matriks, serta sedikit probabilitas. Setiap konsep diperkenalkan ulang pada saat dibutuhkan, dengan contoh angka sebelum rumus.</p>
+    </details>
+    <details>
+      <summary>Bolehkah saya memakai ChatGPT, Claude, atau Gemini?</summary>
+      <p>Boleh. Lihat bagian 6 untuk tiga hal yang tetap berlaku.</p>
+    </details>
+    <details>
+      <summary>Koneksi internet kampus lambat.</summary>
+      <p>Halaman ini tidak memuat berkas dari situs lain, jadi ringan. Colab memerlukan internet; unduh buku lebih dulu agar bacaan tidak bergantung pada koneksi.</p>
+    </details>
+    <details>
+      <summary>Apakah halaman ini mengumpulkan data tentang saya?</summary>
+      <p>Halaman ini tidak memuat pelacak, iklan, atau skrip dari pihak ketiga, dan tidak meminta akun atau data pribadi.</p>
+    </details>
+
+    <h2 id="p1">11. Untuk Pertemuan 1</h2>
+    <ul>
+      <li>Baca UDL bagian 1.1 (halaman 1 sampai 6) dan bab 2 (halaman 17 sampai 22).</li>
+      <li>Bawa laptop yang sudah dapat membuka Colab.</li>
+      <li>Selesaikan bagian persiapan teknis yang tertinggal.</li>
+      <li>Panduan baca Pertemuan 1 dari mentor akan dibagikan lewat kanal komunikasi kelas.</li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>Advance Study Group, Computing Laboratory, Fakultas Informatika, Telkom University. Materi ini ditulis tersendiri oleh mentor dan merujuk ke buku di atas tanpa menyalin isinya.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Situs statis Pertemuan 0. Tidak ada langkah build.
+# Untuk deploy dari GitHub: atur "Base directory" = week0 (folder berkas ini).
+# Untuk deploy tarik-dan-lepas: seret folder week0/site saja.
+# Header keamanan ada di site/_headers sehingga berlaku untuk kedua cara.
+[build]
+  publish = "site"

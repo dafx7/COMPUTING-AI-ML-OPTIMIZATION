@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pretest Pertemuan 0 (tanpa nilai)</title>
+  <style>
+    :root { --navy: #0A2540; --gold: #F7B125; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #0A2540; line-height: 1.45; margin: 0; }
+    .halaman { max-width: 46rem; margin: 0 auto; padding: 16px; }
+    header { border-bottom: 5px solid var(--gold); padding-bottom: 8px; margin-bottom: 12px; }
+    h1 { font-size: 1.5rem; margin: 0 0 4px; }
+    h2 { font-size: 1.05rem; margin: 16px 0 6px; background: var(--navy); color: #fff; padding: 4px 10px; }
+    .info { border: 2px solid var(--navy); padding: 8px 12px; margin: 10px 0; border-radius: 6px; }
+    .nama { display: flex; gap: 8px; align-items: baseline; margin-top: 8px; }
+    .garis { flex: 1; border-bottom: 2px solid var(--navy); min-height: 1.4em; }
+    ol { padding-left: 2rem; }
+    li { margin: 0 0 12px; break-inside: avoid; }
+    pre { background: #F2F5F9; border: 1px solid #C5D0DE; padding: 6px 10px; margin: 4px 0; font-size: 0.9rem; white-space: pre-wrap; }
+    .jawab { display: block; border-bottom: 1px solid #0A2540; height: 1.7em; margin-top: 4px; }
+    .jawab.dua { height: 3.2em; }
+    .teks { border-left: 4px solid var(--gold); padding: 4px 10px; margin: 4px 0; font-style: italic; }
+    @page { size: A4; margin: 14mm; }
+    @media print { .halaman { padding: 0; max-width: none; } body { font-size: 11pt; } h2.baru { break-before: page; } h2 { break-after: avoid; } }
+  </style>
+</head>
+<body>
+<div class="halaman">
+  <header>
+    <h1>Pretest Pertemuan 0</h1>
+    <div>Track AI, ML, dan Optimasi · Advance Study Group</div>
+  </header>
+
+  <div class="info">
+    <strong>Tanpa nilai, tanpa nama asli.</strong> Kamu tidak diharapkan tahu semua jawabannya. Kosongkan yang tidak kamu tahu. Hasilnya hanya dipakai mentor untuk merencanakan kelas. Waktu: <strong>10 menit</strong>, tanpa perangkat.
+    <div class="nama"><span>Nama samaran (satu kata, ingat baik-baik):</span><span class="garis"></span></div>
+  </div>
+
+  <h2>A. Membaca program</h2>
+  <ol>
+    <li>Apa yang ditulis program berikut?
+<pre>total ← 0
+untuk i ← 1 sampai 4:
+    total ← total + i * 2
+tulis total</pre>
+      <span class="jawab"></span></li>
+    <li>Apa yang ditulis program berikut?
+<pre>data ← [4, 9, 2, 7]
+terbesar ← elemen pertama dari data
+untuk setiap x dalam data:
+    jika x > terbesar:
+        terbesar ← x
+tulis terbesar</pre>
+      <span class="jawab"></span></li>
+    <li>Berapa nilai f(4)?
+<pre>fungsi f(n):
+    jika n ≤ 1: kembalikan 1
+    kembalikan n * f(n − 1)</pre>
+      <span class="jawab"></span></li>
+    <li>Dua perulangan bersarang, masing-masing berjalan n kali. Jika n dijadikan dua kali lipat, kira-kira berapa kali lebih lama waktu jalannya?
+      <span class="jawab"></span></li>
+  </ol>
+
+  <h2 class="baru">B. Matematika</h2>
+  <ol start="5">
+    <li>Berapa turunan f(x) = x² di x = 3?
+      <span class="jawab"></span></li>
+    <li>Pada nilai x berapa (x − 2)² + 1 paling kecil, dan berapa nilai minimumnya?
+      <span class="jawab"></span></li>
+    <li>Berapa hasil kali titik (dot product) [1, 2, 3] · [4, 5, 6]?
+      <span class="jawab"></span></li>
+    <li>Dua koin adil dilempar. Berapa peluang keduanya muncul gambar?
+      <span class="jawab"></span></li>
+  </ol>
+
+  <h2>C. Gagasan tentang pembelajaran mesin</h2>
+  <ol start="9">
+    <li>Dengan kata-katamu sendiri, apa arti "komputer belajar dari data"? Beri satu contoh.
+      <span class="jawab dua"></span></li>
+    <li>Sebuah model dilatih dan diuji pada data yang persis sama, dan akurasinya 99%. Apa yang perlu kita curigai?
+      <span class="jawab dua"></span></li>
+    <li>Sebuah model selalu menjawab "tidak sakit" pada data yang 95% orangnya tidak sakit. Berapa akurasinya, dan apakah model itu berguna?
+      <span class="jawab dua"></span></li>
+  </ol>
+
+  <h2>D. Membaca bahasa Inggris</h2>
+  <ol start="12">
+    <li>Baca teks, lalu jawab dalam bahasa Indonesia.
+      <div class="teks">Gradient descent is an iterative method for finding a minimum of a function. At each step, it moves a small distance in the direction in which the function decreases fastest. If the steps are too large, the method may overshoot the minimum.</div>
+      Menurut teks, apa yang dapat terjadi jika langkahnya terlalu besar?
+      <span class="jawab"></span></li>
+  </ol>
+</div>
+</body>
+</html>
