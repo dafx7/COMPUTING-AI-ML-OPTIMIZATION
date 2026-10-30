@@ -93,6 +93,7 @@
     ctx.textAlign = 'center';
     ctx.lineWidth = 6;
     ctx.strokeStyle = COL.sky;
+    ctx.lineJoin = 'round';
     ctx.strokeText(String(n), C.W / 2, 70);
     ctx.fillStyle = COL.ink;
     ctx.fillText(String(n), C.W / 2, 70);
