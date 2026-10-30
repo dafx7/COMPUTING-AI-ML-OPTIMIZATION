@@ -21,18 +21,33 @@
     <p class="lede">Everyone gets the same budget: <b>600 komodos</b>. The course gets a little narrower with every pipe. How far can your best komodo fly?</p>
 
     <form id="knobs" novalidate>
-      <fieldset>
-        <legend>Population <span class="hint">Komodos per generation. 600 komodos buys 60 generations of 10, or 4 generations of 150.</span></legend>
-        <div class="seg" id="seg-pop"></div>
-      </fieldset>
-      <fieldset>
-        <legend>Mutation rate <span class="hint">Chance that each number in a child's brain gets nudged. Too low: nothing new. Too high: children forget what parents knew.</span></legend>
-        <div class="seg" id="seg-mut"></div>
-      </fieldset>
-      <fieldset>
-        <legend>Brain size <span class="hint">Hidden neurons. Bigger brains can learn more, but have more numbers to get right.</span></legend>
-        <div class="seg" id="seg-hid"></div>
-      </fieldset>
+      <div class="knob">
+        <div class="knob-head"><label for="k-pop">Population</label><output class="num" id="o-pop" for="k-pop">20</output></div>
+        <span class="hint" id="h-pop">Komodos per generation.</span>
+        <div class="knob-row">
+          <button type="button" class="ghost step" data-for="k-pop" data-d="-1" aria-label="Decrease population">&minus;</button>
+          <input type="range" id="k-pop" min="5" max="200" step="5" value="20">
+          <button type="button" class="ghost step" data-for="k-pop" data-d="1" aria-label="Increase population">+</button>
+        </div>
+      </div>
+      <div class="knob">
+        <div class="knob-head"><label for="k-mut">Mutation rate</label><output class="num" id="o-mut" for="k-mut">10%</output></div>
+        <span class="hint">Chance that each number in a child's brain gets nudged. Too low: nothing new. Too high: children forget what parents knew.</span>
+        <div class="knob-row">
+          <button type="button" class="ghost step" data-for="k-mut" data-d="-1" aria-label="Decrease mutation rate">&minus;</button>
+          <input type="range" id="k-mut" min="1" max="50" step="1" value="10">
+          <button type="button" class="ghost step" data-for="k-mut" data-d="1" aria-label="Increase mutation rate">+</button>
+        </div>
+      </div>
+      <div class="knob">
+        <div class="knob-head"><label for="k-hid">Brain size</label><output class="num" id="o-hid" for="k-hid">6</output></div>
+        <span class="hint">Hidden neurons. Bigger brains can learn more, but have more numbers to get right.</span>
+        <div class="knob-row">
+          <button type="button" class="ghost step" data-for="k-hid" data-d="-1" aria-label="Decrease brain size">&minus;</button>
+          <input type="range" id="k-hid" min="1" max="16" step="1" value="6">
+          <button type="button" class="ghost step" data-for="k-hid" data-d="1" aria-label="Increase brain size">+</button>
+        </div>
+      </div>
       <fieldset>
         <legend><label for="seed">Seed</label> <span class="hint">Which random start you get. Same knobs and same seed always give the same result.</span></legend>
         <div class="row">

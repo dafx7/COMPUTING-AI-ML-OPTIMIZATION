@@ -205,7 +205,9 @@
   };
 
   // ---------------------------------------------------------------- codes (Act 3)
-  var POPS = [10, 20, 50, 100, 150], MUTS = [0.01, 0.05, 0.1, 0.2, 0.4], HIDS = [2, 4, 6, 10];
+  // Allowed knob values: [min, max, step]. Mutation is in percent.
+  var RANGES = { pop: [5, 200, 5], mut: [1, 50, 1], hidden: [1, 16, 1] };
+  function inRange(v, r) { return v >= r[0] && v <= r[1] && (v - r[0]) % r[2] === 0; }
 
   function encode(o) {
     return String(o.pop) + '-' + Math.round(o.mut * 100) + '-' + o.hidden + '-' + o.seed;
@@ -214,12 +216,12 @@
     var m = String(code).trim().toUpperCase().replace(/\s+/g, '').match(/^(\d+)-(\d+)-(\d+)-(\d+)$/);
     if (!m) { return null; }
     var o = { pop: +m[1], mut: +m[2] / 100, hidden: +m[3], seed: +m[4] };
-    if (POPS.indexOf(o.pop) < 0 || MUTS.indexOf(o.mut) < 0 || HIDS.indexOf(o.hidden) < 0 || o.seed < 1 || o.seed > 9999) { return null; }
+    if (!inRange(o.pop, RANGES.pop) || !inRange(+m[2], RANGES.mut) || !inRange(o.hidden, RANGES.hidden) || o.seed < 1 || o.seed > 9999) { return null; }
     return o;
   }
 
   var api = { C: C, mulberry32: mulberry32, Course: Course, Bird: Bird, stepBird: stepBird,
     Evolution: Evolution, think: think, inputs: inputs, encode: encode, decode: decode,
-    POPS: POPS, MUTS: MUTS, HIDS: HIDS };
+    RANGES: RANGES };
   if (typeof module !== 'undefined' && module.exports) { module.exports = api; } else { root.FK = api; }
 })(this);

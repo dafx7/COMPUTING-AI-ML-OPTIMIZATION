@@ -5,28 +5,31 @@
   var FK = window.FK, R = window.FKR;
   var $ = function (id) { return document.getElementById(id); };
 
-  function seg(id, name, values, label, def) {
-    var box = $(id);
-    values.forEach(function (v, k) {
-      var inp = document.createElement('input');
-      inp.type = 'radio'; inp.name = name; inp.id = name + k; inp.value = String(v);
-      if (v === def) { inp.checked = true; }
-      var lab = document.createElement('label');
-      lab.htmlFor = inp.id; lab.textContent = label(v);
-      box.appendChild(inp); box.appendChild(lab);
-    });
+  var knobs = { pop: $('k-pop'), mut: $('k-mut'), hid: $('k-hid') };
+  function show() {
+    var pop = +knobs.pop.value;
+    $('o-pop').textContent = pop;
+    $('o-mut').textContent = knobs.mut.value + '%';
+    $('o-hid').textContent = knobs.hid.value;
+    $('h-pop').textContent = 'Komodos per generation. ' + pop + ' komodos per generation buys ' +
+      Math.floor(FK.C.RACE_BUDGET / pop) + ' generations.';
   }
-  seg('seg-pop', 'pop', FK.POPS, String, 50);
-  seg('seg-mut', 'mut', FK.MUTS, function (v) { return Math.round(v * 100) + '%'; }, 0.1);
-  seg('seg-hid', 'hid', FK.HIDS, String, 6);
+  Object.keys(knobs).forEach(function (k) { knobs[k].addEventListener('input', show); });
+  document.querySelectorAll('.step').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var el = $(b.getAttribute('data-for'));
+      if (+b.getAttribute('data-d') > 0) { el.stepUp(); } else { el.stepDown(); }
+      show();
+    });
+  });
+  show();
 
   var form = $('knobs'), seedEl = $('seed');
   seedEl.value = String(1 + Math.floor(Math.random() * 9999));
   $('shuffle').addEventListener('click', function () { seedEl.value = String(1 + Math.floor(Math.random() * 9999)); });
 
-  function pick(name) { return +form.querySelector('input[name="' + name + '"]:checked').value; }
   function lock(on) {
-    form.querySelectorAll('input, button[type=submit], #shuffle').forEach(function (el) { el.disabled = on; });
+    form.querySelectorAll('input, button:not(#stop)').forEach(function (el) { el.disabled = on; });
     $('stop').hidden = !on;
   }
 
@@ -56,7 +59,7 @@
     var seed = Math.round(+seedEl.value);
     if (!(seed >= 1 && seed <= 9999)) { seedEl.focus(); seedEl.setCustomValidity('Seed must be 1 to 9999'); seedEl.reportValidity(); return; }
     seedEl.setCustomValidity('');
-    opts = { pop: pick('pop'), mut: pick('mut'), hidden: pick('hid'), seed: seed };
+    opts = { pop: +knobs.pop.value, mut: +knobs.mut.value / 100, hidden: +knobs.hid.value, seed: seed };
     ev = new FK.Evolution({ pop: opts.pop, mut: opts.mut, hidden: opts.hidden, seed: opts.seed, race: true });
     cancel = false;
     lock(true);

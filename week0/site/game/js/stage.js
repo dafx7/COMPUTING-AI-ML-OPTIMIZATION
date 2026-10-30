@@ -194,7 +194,7 @@
     if (busy) { return; }
     var name = $('b-name').value.trim(), raw = $('b-code').value, o = FK.decode(raw), msg = $('b-msg');
     if (!name) { $('b-name').focus(); return; }
-    if (!o) { msg.textContent = 'That code is not valid. Expected population-mutation%-neurons-seed, for example 50-10-6-1234.'; return; }
+    if (!o) { msg.textContent = 'That code is not valid. Expected population-mutation%-neurons-seed, for example 20-10-6-1234 (population 5 to 200 in steps of 5, mutation 1 to 50, neurons 1 to 16, seed 1 to 9999).'; return; }
     var code = FK.encode(o);
     var dup = breeders.filter(function (r) { return r.code === code; })[0];
     if (dup) { msg.textContent = 'Code ' + code + ' was already submitted by ' + dup.name + '.'; return; }
