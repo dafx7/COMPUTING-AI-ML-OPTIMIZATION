@@ -209,25 +209,24 @@ Two parallel tracks of 5 teams (8 min demo plus 4 min Q&A, 60 min), then a 30-mi
 ### Options
 | Option | What happens | For us | Against us |
 |---|---|---|---|
-| A. Motivation only (about 90 min) | Welcome, rules, demos | Low risk, short | Wastes the highest-attention session. Students reach W1 with broken setups and no Python |
+| A. Motivation only (about 60 min) | Welcome, rules, demos | Low risk, short | Wastes the highest-attention session. Students reach W1 with broken setups and no Python |
 | B. Full learning (3 h+) | Python plus first ML lesson | Maximum head start | Overwhelms zero-Python students, drives attrition, no time for setup |
-| C. Hybrid (150 min, recommended) | Expectations, Python bridge, first optimizer, setup stations | One real win, setup done in the room | Tight timing. People without a laptop or account need a plan |
+| C. Hybrid (120 min, recommended) | Expectations, Python bridge, first optimizer, setup stations | One real win, setup started in the room | Tight timing. People without a laptop or account need a plan |
 
-I recommend **C**, as a separate 150-minute session.
+I recommend **C**, as a separate 2-hour session. (First drafted at 150 minutes; cut to 120 once the session length was confirmed.)
 
-### Agenda (150 min)
+### Agenda (120 min)
 | Min | Block |
 |---|---|
-| 0-10 | Welcome and why: ML grounded in optimization. One demo (Evolusi Gambar) running while the mentor speaks |
-| 10-20 | Optional ungraded pretest, 12 questions, paper, anonymous code names. Used to plan clinics only |
-| 20-35 | How the course works (see below) |
-| 35-45 | Break |
-| 45-60 | Python for Go programmers, side by side: types, lists and dicts, indentation, functions, for/range, comprehensions |
-| 60-90 | Colab worksheet: translate 6 Go snippets, NumPy array basics |
-| 90-95 | Break |
-| 95-130 | Small win: "Optimizer 20 baris". A mystery two-parameter function, 30-evaluation budget, random-search leaderboard, debrief on what the best strategies did |
-| 130-145 | Setup stations (GitHub, Colab, book download). Unfinished items become week-1 pre-work |
-| 145-150 | Exit slip: one question and one worry |
+| 0-8 | Pretest (optional, anonymous, ungraded), while the title slide is up |
+| 8-15 | Welcome and why: ML grounded in optimization. Demo (Evolusi Gambar) running |
+| 15-30 | How the course works (see below) |
+| 30-40 | Python for Go programmers, side by side: types, lists and dicts, indentation, functions, for/range, comprehensions |
+| 40-65 | Colab worksheet, exercises 1 to 6 (NumPy exercises 7 to 10 are homework) |
+| 65-70 | Break |
+| 70-105 | Small win: "Optimizer 20 baris". A mystery two-parameter function, 30-evaluation budget, random-search leaderboard, debrief |
+| 105-115 | Setup stations (Colab, GitHub, books). Unfinished items become pre-work |
+| 115-120 | Exit slip: one question and one worry |
 
 ### What to expect
 - **Workload:** about 5 to 6 hours per week (my assumption).
