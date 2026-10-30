@@ -1,7 +1,8 @@
-/* Act 3: students tune population, mutation and brain size, then race on komodos used. */
+/* Act 3: students tune population, mutation and brain size. Same komodo budget for everyone,
+   narrowing course, ranked by how far the best komodo flies. */
 (function () {
   'use strict';
-  var FK = window.FK, R = window.FKR, C = FK.C;
+  var FK = window.FK, R = window.FKR;
   var $ = function (id) { return document.getElementById(id); };
 
   function seg(id, name, values, label, def) {
@@ -29,27 +30,25 @@
     $('stop').hidden = !on;
   }
 
-  var runs = R.store('fk-runs') || [];
+  var runs = R.store('fk-race-runs') || [];
   function drawRuns() {
     var tb = $('runs').querySelector('tbody');
     tb.textContent = '';
     $('empty').hidden = runs.length > 0;
     $('runs').hidden = runs.length === 0;
-    runs.slice().sort(function (a, b) { return (b.ok - a.ok) || (a.komodos - b.komodos); }).forEach(function (r) {
+    runs.slice().sort(function (a, b) { return (b.pipes - a.pipes) || (b.ticks - a.ticks); }).forEach(function (r) {
       var tr = document.createElement('tr');
       var c1 = document.createElement('td'); c1.className = 'num'; c1.textContent = r.code;
-      var c2 = document.createElement('td');
-      c2.textContent = r.ok ? 'Solved, gen ' + r.gens : 'Not solved';
-      c2.className = r.ok ? 'ok' : 'bad';
-      var c3 = document.createElement('td'); c3.className = 'r num'; c3.textContent = r.ok ? r.komodos : '-';
-      tr.appendChild(c1); tr.appendChild(c2); tr.appendChild(c3); tb.appendChild(tr);
+      var c2 = document.createElement('td'); c2.className = 'r num'; c2.textContent = r.pipes;
+      tr.appendChild(c1); tr.appendChild(c2); tb.appendChild(tr);
     });
   }
   drawRuns();
 
   var ev = null, cancel = false, opts = null;
   function chart() {
-    R.chart($('chart'), { xMax: Math.max(ev.history.length, 10), series: [{ data: ev.history, color: '#1e1d1a' }] });
+    var top = Math.max(20, Math.ceil(ev.best / 10) * 10);
+    R.chart($('chart'), { xMax: Math.max(ev.maxGen, 2), yMax: top, series: [{ data: ev.history, color: '#1e1d1a' }] });
   }
 
   form.addEventListener('submit', function (e) {
@@ -58,7 +57,7 @@
     if (!(seed >= 1 && seed <= 9999)) { seedEl.focus(); seedEl.setCustomValidity('Seed must be 1 to 9999'); seedEl.reportValidity(); return; }
     seedEl.setCustomValidity('');
     opts = { pop: pick('pop'), mut: pick('mut'), hidden: pick('hid'), seed: seed };
-    ev = new FK.Evolution(opts);
+    ev = new FK.Evolution({ pop: opts.pop, mut: opts.mut, hidden: opts.hidden, seed: opts.seed, race: true });
     cancel = false;
     lock(true);
     $('live').hidden = false; $('result').hidden = true; $('replay-box').hidden = true;
@@ -72,8 +71,7 @@
     var t0 = performance.now();
     // run whole generations for ~30 ms, then yield so the page stays responsive
     while (!ev.done && !cancel && performance.now() - t0 < 30) { ev.runGen(); }
-    var best = ev.history.length ? Math.max.apply(null, ev.history) : 0;
-    $('status').textContent = 'Generation ' + ev.history.length + ' · Komodos used ' + ev.komodos + ' · Best ' + best + ' pipes';
+    $('status').textContent = 'Generation ' + ev.history.length + ' of ' + ev.maxGen + ' · Best ' + ev.best + ' pipes';
     chart();
     if (cancel) { lock(false); $('status').textContent += ' · stopped'; return; }
     if (!ev.done) { setTimeout(loop, 0); return; }
@@ -86,17 +84,12 @@
     $('result').hidden = false;
     $('code').textContent = code;
     var v = $('verdict');
-    if (ev.success) {
-      v.className = 'ok';
-      v.textContent = 'Solved in generation ' + ev.gen + '. Komodos used: ' + ev.komodos + '.';
-    } else {
-      v.className = 'bad';
-      v.textContent = 'Not solved after ' + C.MAX_GEN + ' generations. Try different knobs or another seed.';
-    }
+    v.className = '';
+    v.textContent = 'Your best komodo passed ' + ev.best + ' pipes after ' + ev.gen + ' generations (' + ev.komodos + ' komodos).';
     runs = runs.filter(function (r) { return r.code !== code; });
-    runs.push({ code: code, ok: ev.success ? 1 : 0, gens: ev.gen, komodos: ev.komodos });
+    runs.push({ code: code, pipes: ev.best, ticks: ev.bestTicks });
     if (runs.length > 30) { runs.shift(); }
-    R.store('fk-runs', runs);
+    R.store('fk-race-runs', runs);
     drawRuns();
   }
 
@@ -117,7 +110,7 @@
   $('watch').addEventListener('click', function () {
     stopReplay();
     $('replay-box').hidden = false;
-    var p = new R.Pilot(ev.champion, opts.hidden), cv = $('replay'), going = true, acc = 0, last = performance.now();
+    var p = new R.Pilot(ev.champion, opts.hidden, true), cv = $('replay'), going = true, acc = 0, last = performance.now();
     function frame(now) {
       acc += Math.min(now - last, 100); last = now;
       while (going && acc >= 1000 / 60) { acc -= 1000 / 60; going = p.step(); }

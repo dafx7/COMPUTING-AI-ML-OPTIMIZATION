@@ -14,6 +14,9 @@
     COURSE_SEED: 2026,
     TARGET: 50,
     MAX_GEN: 60,
+    // Act 3 (race): the gap narrows by RACE_SHRINK per pipe down to RACE_GAP_MIN,
+    // and everyone gets the same komodo budget.
+    RACE_SHRINK: 1, RACE_GAP_MIN: 90, RACE_BUDGET: 600, RACE_CAP: 400,
     INPUTS: 5
   };
 
@@ -27,10 +30,17 @@
   }
 
   // A course is an endless, seeded list of gap centres.
-  function Course(seed) {
+  function Course(seed, race) {
     this.rnd = mulberry32(seed >>> 0);
     this.gaps = [];
+    this.race = !!race;
   }
+  // Height of the opening of pipe i.
+  Course.prototype.gapSize = function (i) {
+    if (!this.race) { return C.GAP; }
+    var g = C.GAP - i * C.RACE_SHRINK;
+    return g < C.RACE_GAP_MIN ? C.RACE_GAP_MIN : g;
+  };
   Course.prototype.gap = function (i) {
     while (this.gaps.length <= i) {
       var prev = this.gaps.length ? this.gaps[this.gaps.length - 1] : (C.H / 2);
@@ -62,7 +72,7 @@
     var px = course.pipeX(i, t);
     var g = course.gap(i);
     b.pipes = i;
-    var top = g - C.GAP / 2, bot = g + C.GAP / 2;
+    var half = course.gapSize(i) / 2, top = g - half, bot = g + half;
     var hitPipe = (C.BIRD_X + C.R > px) && (C.BIRD_X - C.R < px + C.PIPE_W) && (b.y - C.R < top || b.y + C.R > bot);
     if (hitPipe || b.y + C.R > C.H || b.y - C.R < 0) {
       b.alive = false;
@@ -109,14 +119,15 @@
   function Evolution(opts) {
     this.pop = opts.pop; this.mut = opts.mut; this.hidden = opts.hidden;
     this.seed = opts.seed >>> 0;
-    this.target = opts.target || C.TARGET;
-    this.maxGen = opts.maxGen || C.MAX_GEN;
+    this.race = !!opts.race;
+    this.target = this.race ? C.RACE_CAP : (opts.target || C.TARGET);
+    this.maxGen = this.race ? Math.floor(C.RACE_BUDGET / this.pop) : (opts.maxGen || C.MAX_GEN);
     this.rnd = mulberry32((this.seed ^ 0x9E3779B9) >>> 0);
-    this.course = new Course(opts.courseSeed || C.COURSE_SEED);
+    this.course = new Course(opts.courseSeed || C.COURSE_SEED, this.race);
     this.brains = [];
     for (var k = 0; k < this.pop; k++) { this.brains.push(randomBrain(this.hidden, this.rnd)); }
     this.gen = 0; this.komodos = 0; this.history = []; this.done = false; this.success = false;
-    this.champion = null;
+    this.champion = null; this.best = 0; this.bestTicks = 0;
     this.beginGen();
   }
 
@@ -161,6 +172,9 @@
     var bestBird = this.birds[order[0]];
     this.history.push(bestBird.pipes);
     this.champion = this.brains[order[0]].slice();
+    if (bestBird.pipes > this.best || (bestBird.pipes === this.best && bestBird.ticks > this.bestTicks)) {
+      this.best = bestBird.pipes; this.bestTicks = bestBird.ticks;
+    }
     if (bestBird.pipes >= this.target) { this.done = true; this.success = true; return; }
     if (this.gen >= this.maxGen) { this.done = true; return; }
     var rnd = this.rnd, pop = this.pop;

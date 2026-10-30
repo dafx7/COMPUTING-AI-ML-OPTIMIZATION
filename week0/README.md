@@ -23,7 +23,8 @@ Kickoff session for the AI/ML/Optimization track (120 minutes, separate from the
 
 - Everything runs in the browser. Nothing is sent anywhere, so leaderboards live on the projector laptop (`stage.html`, kept in that browser's local storage).
 - Act 1 scores are honour-based: students show their phone.
-- Act 3 codes look like `50-10-6-4821` (population, mutation %, hidden neurons, seed). The stage re-runs each code, so results are verified, not trusted. "Check" re-runs the same knobs on five more seeds.
+- Act 3 is a race: everyone gets the same budget of 600 komodos, the course opening shrinks by 1 px per pipe (150 down to 90), and the score is how many pipes the best komodo passes. Codes look like `20-10-6-77` (population, mutation %, hidden neurons, seed). The stage re-runs each code, so results are verified, not trusted. "Check" re-runs the same knobs on five more seeds and shows the average and the worst.
+- Proposed Act 3 winner rule: the top 5 by single run qualify, and the highest 5-seed average wins.
 - The rehearsed Act 2 run is `50-10-6-43`: generation 1 passes 0 pipes, the finish (50 pipes) comes in generation 15 after 750 komodos.
 
 Deploy steps are in `../docs/deploy-netlify.md`. Nothing is deployed without the coordinator's confirmation.

@@ -38,7 +38,7 @@
     for (var i = first; i < first + 4; i++) {
       var px = course.pipeX(i, t);
       if (px > C.W || px + C.PIPE_W < 0) { continue; }
-      var g = course.gap(i), top = g - C.GAP / 2, bot = g + C.GAP / 2;
+      var g = course.gap(i), half = course.gapSize(i) / 2, top = g - half, bot = g + half;
       ctx.fillStyle = COL.pipe;
       ctx.strokeStyle = COL.pipeEdge;
       ctx.lineWidth = 2;
@@ -147,18 +147,19 @@
   }
 
   // Fly one brain along the course, one tick per call. Used for "watch the champion".
-  function Pilot(brain, hidden) {
+  function Pilot(brain, hidden, race) {
     this.brain = brain; this.hidden = hidden;
-    this.course = new root.FK.Course(C.COURSE_SEED);
+    this.cap = race ? C.RACE_CAP : C.TARGET;
+    this.course = new root.FK.Course(C.COURSE_SEED, race);
     this.bird = new root.FK.Bird(); this.t = 0;
   }
   Pilot.prototype.step = function () {
     var b = this.bird;
-    if (!b.alive || b.pipes >= C.TARGET) { return false; }
+    if (!b.alive || b.pipes >= this.cap) { return false; }
     var flap = root.FK.think(this.brain, this.hidden, root.FK.inputs(b, this.course, this.t));
     root.FK.stepBird(b, this.course, this.t, flap);
     this.t += 1;
-    return b.alive && b.pipes < C.TARGET;
+    return b.alive && b.pipes < this.cap;
   };
 
   function store(key, val) {

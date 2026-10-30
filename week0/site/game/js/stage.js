@@ -127,8 +127,8 @@
 
   // ------------------------------------------------------------ leaderboards
   var humans = R.store('fk-stage-humans') || [];
-  var breeders = R.store('fk-stage-breeders') || [];
-  function save() { R.store('fk-stage-humans', humans); R.store('fk-stage-breeders', breeders); }
+  var breeders = R.store('fk-stage-race') || [];
+  function save() { R.store('fk-stage-humans', humans); R.store('fk-stage-race', breeders); }
 
   function cell(tr, text, cls) { var td = document.createElement('td'); td.textContent = text; if (cls) { td.className = cls; } tr.appendChild(td); return td; }
   function removeBtn(td, onClick) {
@@ -155,21 +155,20 @@
     $('h-name').value = ''; $('h-score').value = ''; $('h-name').focus();
   });
 
-  function rankBreeders(a, b) { return (b.ok - a.ok) || (a.komodos - b.komodos) || (a.at - b.at); }
+  function rankBreeders(a, b) { return (b.pipes - a.pipes) || (b.ticks - a.ticks) || (a.at - b.at); }
 
   function drawBreeders() {
     var tb = $('t-b').querySelector('tbody'); tb.textContent = '';
     breeders.slice().sort(rankBreeders).forEach(function (r, i) {
       var tr = document.createElement('tr');
-      cell(tr, r.ok ? String(i + 1) : '-', 'num');
+      cell(tr, String(i + 1), 'num');
       cell(tr, r.name);
       cell(tr, r.code, 'num');
-      cell(tr, r.ok ? 'Solved, gen ' + r.gens : 'Not solved', r.ok ? 'ok' : 'bad');
-      cell(tr, r.ok ? String(r.komodos) : '-', 'r num');
+      cell(tr, String(r.pipes), 'r num');
       var rob = cell(tr, '');
       if (r.robust) {
-        rob.textContent = r.robust.solved + '/5 solved' + (r.robust.solved ? ', avg ' + r.robust.avg : '');
-      } else if (r.ok) {
+        rob.textContent = 'avg ' + r.robust.avg + ', worst ' + r.robust.worst;
+      } else {
         var b = document.createElement('button'); b.type = 'button'; b.className = 'ghost'; b.textContent = 'Check';
         b.addEventListener('click', function () { b.disabled = true; b.textContent = 'Running'; robust(r); });
         rob.appendChild(b);
@@ -181,7 +180,7 @@
 
   // Run an evolution to the end without freezing the page.
   function runAsync(o, done) {
-    var e = new FK.Evolution(o);
+    var e = new FK.Evolution({ pop: o.pop, mut: o.mut, hidden: o.hidden, seed: o.seed, race: true });
     (function step() {
       var t0 = performance.now();
       while (!e.done && performance.now() - t0 < 25) { e.runGen(); }
@@ -203,24 +202,24 @@
     msg.textContent = 'Re-running ' + code + '...';
     runAsync(o, function (ev2) {
       busy = false;
-      var r = { name: name, code: code, ok: ev2.success ? 1 : 0, gens: ev2.gen, komodos: ev2.komodos, at: Date.now(), robust: null };
+      var r = { name: name, code: code, pipes: ev2.best, ticks: ev2.bestTicks, at: Date.now(), robust: null };
       breeders.push(r); save(); drawBreeders();
-      msg.textContent = name + ': ' + (r.ok ? 'verified, ' + r.komodos + ' komodos.' : 'not solved within ' + C.MAX_GEN + ' generations.');
+      msg.textContent = name + ': verified, ' + r.pipes + ' pipes.';
       $('b-name').value = ''; $('b-code').value = ''; $('b-name').focus();
     });
   });
 
   function robust(r) {
-    var o = FK.decode(r.code), k = 0, solved = 0, total = 0;
+    var o = FK.decode(r.code), k = 0, worst = Infinity, total = 0;
     (function next() {
       if (k === 5) {
-        r.robust = { solved: solved, avg: solved ? Math.round(total / solved) : 0 };
+        r.robust = { avg: Math.round(total / 5), worst: worst };
         save(); drawBreeders(); return;
       }
       k += 1;
       var s = ((o.seed - 1 + k) % 9999) + 1;
       runAsync({ pop: o.pop, mut: o.mut, hidden: o.hidden, seed: s }, function (e) {
-        if (e.success) { solved += 1; total += e.komodos; }
+        total += e.best; if (e.best < worst) { worst = e.best; }
         next();
       });
     })();

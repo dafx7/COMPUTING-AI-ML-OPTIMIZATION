@@ -24,7 +24,7 @@
   <main id="isi">
     <noscript><div class="catatan"><p>Demo ini memerlukan JavaScript. Aktifkan JavaScript di peramban, lalu muat ulang halaman.</p></div></noscript>
 
-    <p>Program memegang 40 segitiga transparan. Pada setiap langkah ia <strong>mengubah satu hal kecil</strong> pada satu segitiga (menggeser sudut, mengubah warna, atau mengubah transparansi), lalu menggambar ulang dan menghitung <strong>galat</strong>, yaitu seberapa jauh gambarnya dari target. Jika galat <em>tidak bertambah</em>, perubahan disimpan. Jika bertambah, perubahan dibuang. Itulah algoritma <em>hill climbing</em> yang akan kita pelajari penuh di Pekan 9.</p>
+    <p>Program memegang 40 segitiga transparan. Pada setiap langkah ia <strong>mengubah satu hal kecil</strong> pada satu segitiga (menggeser sudut, mengubah warna, atau mengubah transparansi), lalu menggambar ulang dan menghitung <strong>error</strong>, yaitu seberapa jauh gambarnya dari target. Jika error <em>tidak bertambah</em>, perubahan disimpan. Jika bertambah, perubahan dibuang. Itulah algoritma <em>hill climbing</em> yang akan kita pelajari penuh di Pekan 9.</p>
 
     <div class="kendali">
       <button type="button" id="tombol-main">Mulai</button>
@@ -51,15 +51,15 @@
     <dl class="statistik">
       <dt>Evaluasi terpakai</dt><dd><span id="s-iter">0</span> dari 30.000</dd>
       <dt>Perubahan diterima</dt><dd id="s-terima">0</dd>
-      <dt>Galat sekarang</dt><dd id="s-galat">0</dd>
+      <dt>Error sekarang</dt><dd id="s-galat">0</dd>
       <dt>Perbaikan dari awal</dt><dd id="s-baik">0%</dd>
       <dt>Nomor acak (seed)</dt><dd id="s-seed">0</dd>
     </dl>
     <p id="umum" class="sr-only" aria-live="polite"></p>
 
     <div class="kurva">
-      <canvas id="kanvas-kurva" width="480" height="200" role="img" aria-label="Grafik galat terhadap jumlah evaluasi. Galat turun cepat di awal lalu melambat."></canvas>
-      <p class="kecil"><small>Sumbu datar: jumlah evaluasi. Sumbu tegak: galat (semakin rendah semakin mirip target).</small></p>
+      <canvas id="kanvas-kurva" width="480" height="200" role="img" aria-label="Grafik error terhadap jumlah evaluasi. Error turun cepat di awal lalu melambat."></canvas>
+      <p class="kecil"><small>Sumbu datar: jumlah evaluasi. Sumbu tegak: error (semakin rendah semakin mirip target).</small></p>
     </div>
 
     <h2>Untuk didiskusikan</h2>

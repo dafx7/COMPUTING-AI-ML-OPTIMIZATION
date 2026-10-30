@@ -197,7 +197,7 @@
   }
 
   function laporkan(pesan) {
-    umum.textContent = pesan + ' Evaluasi ' + format(iter) + '. Galat ' + galatSkrg.toFixed(1).replace('.', ',') +
+    umum.textContent = pesan + ' Evaluasi ' + format(iter) + '. Error ' + galatSkrg.toFixed(1).replace('.', ',') +
       '. Perbaikan ' + Math.round((1 - galatSkrg / galat0) * 100) + ' persen dari awal.';
   }
 
