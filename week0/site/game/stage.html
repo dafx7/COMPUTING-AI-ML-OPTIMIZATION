@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stage | Flappy Komodo</title>
+  <meta name="description" content="Projector view: live evolution and the leaderboards.">
+  <meta name="theme-color" content="#f6f3ec">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <header class="top"><div class="wrap wide">
+    <a class="brand" href="index.html">Flappy Komodo</a>
+    <nav><a href="play.html">Play</a><a href="breed.html">Breed</a><a href="stage.html" aria-current="page">Stage</a></nav>
+  </div></header>
+
+  <main class="wrap wide">
+    <noscript><p>This page needs JavaScript.</p></noscript>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-evo" aria-controls="p-evo" aria-selected="true">Act 2: Evolution</button>
+      <button type="button" role="tab" id="tab-h" aria-controls="p-h" aria-selected="false">Act 1: Humans</button>
+      <button type="button" role="tab" id="tab-b" aria-controls="p-b" aria-selected="false">Act 3: Breeders</button>
+    </div>
+
+    <section id="p-evo" role="tabpanel" aria-labelledby="tab-evo">
+      <div class="stage-grid">
+        <div class="stage-box" id="box"><canvas id="cv" role="img" aria-label="All komodos of the current generation flying the course"></canvas></div>
+        <div>
+          <dl class="stats">
+            <div><dt>Generation</dt><dd id="s-gen">1</dd></div>
+            <div><dt>Alive</dt><dd id="s-alive">0</dd></div>
+            <div><dt>Pipes now</dt><dd id="s-now">0</dd></div>
+            <div><dt>Record</dt><dd id="s-rec">0</dd></div>
+            <div><dt>Komodos used</dt><dd id="s-kom">0</dd></div>
+          </dl>
+          <p class="banner" id="banner" hidden aria-live="assertive"></p>
+          <canvas class="chart" id="chart" role="img" aria-label="Best pipes per generation"></canvas>
+          <p class="small"><span class="legend-line lg-best"></span>best of each generation <span class="legend-line lg-human"></span>best human (Act 1)</p>
+          <div class="row">
+            <button type="button" id="go">Start</button>
+            <button type="button" class="ghost" id="skip">Skip generation</button>
+            <label for="speed">Speed</label>
+            <select id="speed"><option value="1">1x</option><option value="3" selected>3x</option><option value="10">10x</option><option value="40">40x</option></select>
+          </div>
+          <div class="row">
+            <label for="human">Best human</label><input type="number" id="human" min="0" max="999" value="0" inputmode="numeric">
+            <button type="button" class="ghost" id="use-top">Use Act 1 top score</button>
+          </div>
+          <details class="panel">
+            <summary>Settings</summary>
+            <div class="row">
+              <label for="code">Run code</label><input type="text" id="code" value="50-10-6-43" spellcheck="false" autocomplete="off">
+              <button type="button" class="ghost" id="reset">Reset</button>
+            </div>
+            <p class="small">Code is population-mutation%-neurons-seed. 50-10-6-43 is the rehearsed demo run.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="p-h" role="tabpanel" aria-labelledby="tab-h" hidden>
+      <h2>Act 1: best humans</h2>
+      <p class="small">Students show their phone screen. Type their best score.</p>
+      <form id="f-h" class="row" novalidate>
+        <label for="h-name">Name</label><input type="text" id="h-name" maxlength="30" autocomplete="off">
+        <label for="h-score">Pipes</label><input type="number" id="h-score" min="0" max="999" inputmode="numeric">
+        <button type="submit">Add</button>
+      </form>
+      <table id="t-h"><thead><tr><th>#</th><th>Name</th><th class="r">Pipes</th><th></th></tr></thead><tbody></tbody></table>
+    </section>
+
+    <section id="p-b" role="tabpanel" aria-labelledby="tab-b" hidden>
+      <h2>Act 3: fewest komodos to reach 50 pipes</h2>
+      <p class="small">Each code is re-run here, so the result is checked, not trusted.</p>
+      <form id="f-b" class="row" novalidate>
+        <label for="b-name">Name</label><input type="text" id="b-name" maxlength="30" autocomplete="off">
+        <label for="b-code">Code</label><input type="text" id="b-code" placeholder="50-10-6-1234" spellcheck="false" autocomplete="off">
+        <button type="submit">Verify and add</button>
+      </form>
+      <p id="b-msg" aria-live="polite"></p>
+      <table id="t-b"><thead><tr><th>#</th><th>Name</th><th>Code</th><th>Result</th><th class="r">Komodos</th><th>Other seeds</th><th></th></tr></thead><tbody></tbody></table>
+      <p class="small">"Other seeds" re-runs the same knobs with the next five seeds. A lucky seed and good knobs look the same in one run. They do not look the same over five.</p>
+    </section>
+
+    <p class="foot"><button type="button" class="ghost" id="clear">Clear leaderboards</button></p>
+  </main>
+
+  <script src="js/engine.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/stage.js"></script>
+</body>
+</html>

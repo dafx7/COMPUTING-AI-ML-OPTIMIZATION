@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Breed | Flappy Komodo</title>
+  <meta name="description" content="Act 3: tune the evolution and reach 50 pipes with as few komodos as possible.">
+  <meta name="theme-color" content="#f6f3ec">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="index.html">Flappy Komodo</a>
+    <nav><a href="play.html">Play</a><a href="breed.html" aria-current="page">Breed</a></nav>
+  </div></header>
+
+  <main class="wrap">
+    <noscript><p>This page needs JavaScript.</p></noscript>
+    <h1>Act 3: Breed</h1>
+    <p class="lede">Every komodo you hatch costs one. Reach <b>50 pipes</b> using as few komodos as possible. If evolution has not made it after 60 generations, the run does not count.</p>
+
+    <form id="knobs" novalidate>
+      <fieldset>
+        <legend>Population <span class="hint">Komodos per generation. More komodos explore more, but each generation costs more.</span></legend>
+        <div class="seg" id="seg-pop"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Mutation rate <span class="hint">Chance that each number in a child's brain gets nudged. Too low: nothing new. Too high: children forget what parents knew.</span></legend>
+        <div class="seg" id="seg-mut"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Brain size <span class="hint">Hidden neurons. Bigger brains can learn more, but have more numbers to get right.</span></legend>
+        <div class="seg" id="seg-hid"></div>
+      </fieldset>
+      <fieldset>
+        <legend><label for="seed">Seed</label> <span class="hint">Which random start you get. Same knobs and same seed always give the same result.</span></legend>
+        <div class="row">
+          <input type="number" id="seed" min="1" max="9999" step="1" inputmode="numeric" value="1">
+          <button type="button" class="ghost" id="shuffle">Random seed</button>
+        </div>
+      </fieldset>
+      <div class="row">
+        <button type="submit" id="run">Run evolution</button>
+        <button type="button" class="ghost" id="stop" hidden>Stop</button>
+      </div>
+    </form>
+
+    <section class="panel" id="live" hidden aria-live="polite">
+      <p id="status" class="num">Generation 0</p>
+      <canvas class="chart" id="chart" role="img" aria-label="Best pipes passed per generation"></canvas>
+      <p class="small">Line: best pipes in each generation. Top of the chart is 50.</p>
+      <div id="result" hidden>
+        <p id="verdict"></p>
+        <p class="small">Your code</p>
+        <p class="result-code" id="code"></p>
+        <div class="row">
+          <button type="button" class="ghost" id="copy">Copy code</button>
+          <button type="button" class="ghost" id="watch">Watch the champion</button>
+        </div>
+        <div class="stage-box replay" id="replay-box" hidden><canvas id="replay" role="img" aria-label="Champion komodo flying the course"></canvas></div>
+        <p class="small">Submit your best code to a mentor. The projector re-runs it to check.</p>
+      </div>
+    </section>
+
+    <h2>Your runs</h2>
+    <p class="small" id="empty">No runs yet.</p>
+    <table id="runs" hidden>
+      <thead><tr><th>Code</th><th>Result</th><th class="r">Komodos</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>What is going on</h2>
+    <p>Each komodo has a tiny brain: a handful of numbers. It looks at five things (its height, its speed, the distance to the next pipe, how far the gap is above or below it, and a constant) and decides to flap or not.</p>
+    <p>Generation 1 gets random numbers, so most crash at once. The komodos that flew furthest become parents. Children mix their parents' numbers and get a few random nudges. Repeat. Nobody ever writes the rule for when to flap.</p>
+    <p>This is a <b>genetic algorithm</b> training a <b>neural network</b>. You will meet both properly later in the course.</p>
+  </main>
+
+  <footer class="foot"><div class="wrap">Runs entirely in your browser. Nothing is sent anywhere.</div></footer>
+
+  <script src="js/engine.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/breed.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Play | Flappy Komodo</title>
+  <meta name="description" content="Act 1: fly the komodo through the pipes.">
+  <meta name="theme-color" content="#f6f3ec">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="index.html">Flappy Komodo</a>
+    <nav><a href="play.html" aria-current="page">Play</a><a href="breed.html">Breed</a></nav>
+  </div></header>
+
+  <main class="play">
+    <noscript><p>This game needs JavaScript.</p></noscript>
+    <div class="stage-box" id="box" tabindex="0" aria-label="Game area. Press Space, Up arrow or tap to flap.">
+      <canvas id="cv" role="img" aria-label="Flappy Komodo game"></canvas>
+      <div class="overlay" id="ready">
+        <h2>Act 1: Play</h2>
+        <p>Tap, click or press Space to flap.</p>
+        <p class="small">Everyone flies the same course. Later, evolution will fly it too.</p>
+        <button type="button" id="start">Start</button>
+      </div>
+      <div class="overlay" id="over" hidden>
+        <p class="small">Pipes passed</p>
+        <p class="big num" id="final">0</p>
+        <p id="note"></p>
+        <button type="button" id="again">Try again</button>
+        <p class="small">When time is up, show your best score to a mentor.</p>
+      </div>
+    </div>
+    <div class="bar" aria-live="polite">
+      <span>Best <b class="num" id="best">0</b></span>
+      <span>Attempts <b class="num" id="tries">0</b></span>
+    </div>
+  </main>
+
+  <script src="js/engine.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/play.js"></script>
+</body>
+</html>
