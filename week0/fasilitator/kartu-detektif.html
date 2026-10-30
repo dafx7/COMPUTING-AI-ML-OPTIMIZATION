@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kartu Detektif Paper</title>
+  <style>
+    :root { --navy: #0A2540; --gold: #F7B125; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: var(--navy); margin: 0; line-height: 1.35; }
+    .kartu { width: 210mm; height: 297mm; padding: 12mm 14mm; page-break-after: always; display: flex; flex-direction: column; }
+    .kartu:last-child { page-break-after: auto; }
+    header { display: flex; align-items: center; gap: 10px; border-bottom: 4px solid var(--gold); padding-bottom: 6px; margin-bottom: 8px; }
+    .huruf { background: var(--navy); color: var(--gold); font-weight: 800; font-size: 26pt; width: 16mm; height: 16mm; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
+    h1 { font-size: 15pt; margin: 0; }
+    header small { display: block; font-size: 9pt; font-weight: 400; }
+    .nama { margin-left: auto; font-size: 9pt; text-align: right; }
+    .garis-nama { display: inline-block; width: 40mm; border-bottom: 1.5px solid var(--navy); }
+    .gambar { border: 2px solid var(--navy); margin-bottom: 8px; background: #fff; text-align: center; }
+    .gambar img { max-width: 100%; max-height: 105mm; display: block; margin: 0 auto; }
+    .dua { display: flex; gap: 8mm; flex: 1; }
+    .dua .gambar { flex: 0 0 62mm; align-self: flex-start; }
+    .dua .gambar img { max-height: 150mm; }
+    .soal { flex: 1; }
+    ol { padding-left: 5mm; margin: 0; }
+    li { margin: 0 0 3.2mm; font-size: 10.5pt; }
+    li b { font-weight: 700; }
+    li span { display: block; font-size: 8.5pt; color: #3f5167; }
+    .j { display: block; border-bottom: 1px solid var(--navy); height: 6.2mm; }
+    .bonus { border: 2px dashed var(--navy); border-radius: 6px; padding: 3mm 4mm; margin-top: auto; font-size: 9.5pt; }
+    @page { size: A4; margin: 0; }
+  </style>
+</head>
+<body>
+
+<section class="kartu">
+  <header><div class="huruf">A</div><h1>Kartu Detektif Paper<small>Baca abstrak, lalu jawab lima pertanyaan. Waktu 12 menit.</small></h1>
+    <div class="nama">Pasangan: <span class="garis-nama"></span></div></header>
+  <div class="gambar"><img src="kartu/skin.png" alt="Judul dan abstrak paper A"></div>
+  <ol>
+    <li><b>Masalah apa yang dikerjakan?</b><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa yang diusulkan atau dilakukan?</b><span class="j"></span><span class="j"></span></li>
+    <li><b>Bagaimana diuji?</b> <span>Data, pembanding, jumlah percobaan</span><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa angka kuncinya?</b> <span>Tulis angkanya dan di kalimat mana angka itu tertulis</span><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa keterbatasannya?</b><span class="j"></span><span class="j"></span></li>
+  </ol>
+  <div class="bonus">Jenis paper ini: &#9744; riset murni &#9744; riset terapan &#9744; bidang yang berkembang &#9744; poster. Satu pertanyaan untuk penulis: ______________________________________</div>
+</section>
+
+<section class="kartu">
+  <header><div class="huruf">B</div><h1>Kartu Detektif Paper<small>Baca abstrak, lalu jawab lima pertanyaan. Waktu 12 menit.</small></h1>
+    <div class="nama">Pasangan: <span class="garis-nama"></span></div></header>
+  <div class="gambar"><img src="kartu/cotpot.png" alt="Judul dan abstrak paper B"></div>
+  <ol>
+    <li><b>Masalah apa yang dikerjakan?</b><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa yang diusulkan atau dilakukan?</b><span class="j"></span><span class="j"></span></li>
+    <li><b>Bagaimana diuji?</b> <span>Data, pembanding, jumlah percobaan</span><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa angka kuncinya?</b> <span>Tulis angkanya dan di kalimat mana angka itu tertulis</span><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa keterbatasannya?</b><span class="j"></span><span class="j"></span></li>
+  </ol>
+  <div class="bonus">Jenis paper ini: &#9744; riset murni &#9744; riset terapan &#9744; bidang yang berkembang &#9744; poster. Satu pertanyaan untuk penulis: ______________________________________</div>
+</section>
+
+<section class="kartu">
+  <header><div class="huruf">C</div><h1>Kartu Detektif Paper<small>Baca abstrak, lalu jawab lima pertanyaan. Waktu 12 menit.</small></h1>
+    <div class="nama">Pasangan: <span class="garis-nama"></span></div></header>
+  <div class="gambar"><img src="kartu/kma.png" alt="Judul dan abstrak paper C"></div>
+  <ol>
+    <li><b>Masalah apa yang dikerjakan?</b><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa yang diusulkan atau dilakukan?</b><span class="j"></span><span class="j"></span></li>
+    <li><b>Bagaimana diuji?</b> <span>Data, pembanding, jumlah percobaan</span><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa angka kuncinya?</b> <span>Tulis angkanya dan di kalimat mana angka itu tertulis</span><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa keterbatasannya?</b><span class="j"></span><span class="j"></span></li>
+  </ol>
+  <div class="bonus">Jenis paper ini: &#9744; riset murni &#9744; riset terapan &#9744; bidang yang berkembang &#9744; poster. Satu pertanyaan untuk penulis: ______________________________________</div>
+</section>
+
+<section class="kartu">
+  <header><div class="huruf">D</div><h1>Kartu Detektif Paper<small>Baca abstrak, lalu jawab lima pertanyaan. Waktu 12 menit.</small></h1>
+    <div class="nama">Pasangan: <span class="garis-nama"></span></div></header>
+  <div class="gambar"><img src="kartu/ikma.png" alt="Judul dan abstrak paper D"></div>
+  <ol>
+    <li><b>Masalah apa yang dikerjakan?</b><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa yang diusulkan atau dilakukan?</b><span class="j"></span><span class="j"></span></li>
+    <li><b>Bagaimana diuji?</b> <span>Data, pembanding, jumlah percobaan</span><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa angka kuncinya?</b> <span>Tulis angkanya dan di kalimat mana angka itu tertulis</span><span class="j"></span><span class="j"></span></li>
+    <li><b>Apa keterbatasannya?</b><span class="j"></span><span class="j"></span></li>
+  </ol>
+  <div class="bonus">Jenis paper ini: &#9744; riset murni &#9744; riset terapan &#9744; bidang yang berkembang &#9744; poster. Satu pertanyaan untuk penulis: ______________________________________</div>
+</section>
+
+<section class="kartu">
+  <header><div class="huruf">E</div><h1>Kartu Detektif Paper (poster)<small>Baca poster, lalu jawab lima pertanyaan. Waktu 12 menit.</small></h1>
+    <div class="nama">Pasangan: <span class="garis-nama"></span></div></header>
+  <div class="dua">
+    <div class="gambar"><img src="kartu/poster.jpg" alt="Foto poster paper E"></div>
+    <div class="soal"><ol>
+      <li><b>Masalah apa yang dikerjakan?</b><span class="j"></span><span class="j"></span></li>
+      <li><b>Apa yang diusulkan atau dilakukan?</b><span class="j"></span><span class="j"></span></li>
+      <li><b>Bagaimana diuji?</b> <span>Data, pembanding, jumlah percobaan</span><span class="j"></span><span class="j"></span></li>
+      <li><b>Apa angka kuncinya?</b> <span>Tulis angkanya dan di kotak mana angka itu tertulis</span><span class="j"></span><span class="j"></span></li>
+      <li><b>Apa keterbatasannya?</b> <span>Cari kotak Limitations</span><span class="j"></span><span class="j"></span></li>
+    </ol></div>
+  </div>
+  <div class="bonus">Jenis paper ini: &#9744; riset murni &#9744; riset terapan &#9744; bidang yang berkembang &#9744; poster. Satu pertanyaan untuk penulis: ______________________________________</div>
+</section>
+
+</body>
+</html>

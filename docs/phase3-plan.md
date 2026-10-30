@@ -204,34 +204,37 @@ Two parallel tracks of 5 teams (8 min demo plus 4 min Q&A, 60 min), then a 30-mi
 - **Standalone data-quality, fairness and deployment weeks:** folded into W7 (leakage), W13 to W15 (deploy), W15 (audit, data statement, model card). I judge this enough for beginners, and a standalone fairness week would need a chapter I could not find at beginner level.
 - **MLOps, Docker, cloud, AutoML:** out of scope.
 
-## 4. Week 0 (kickoff)
+## 4. Week 0 (kickoff): "Belajar AI lewat paper"
+
+Redesigned after the first draft. Theme: in AI, knowledge lives in papers; books teach the foundations, papers show the frontier. The session shows four kinds of papers with real examples from our campus (pure research, applied, a field that keeps improving, paper to poster), teaches how to read one in 10 minutes, and ties the course to what a real paper contains.
 
 ### Options
 | Option | What happens | For us | Against us |
 |---|---|---|---|
-| A. Motivation only (about 60 min) | Welcome, rules, demos | Low risk, short | Wastes the highest-attention session. Students reach W1 with broken setups and no Python |
-| B. Full learning (3 h+) | Python plus first ML lesson | Maximum head start | Overwhelms zero-Python students, drives attrition, no time for setup |
-| C. Hybrid (120 min, recommended) | Expectations, Python bridge, first optimizer, setup stations | One real win, setup started in the room | Tight timing. People without a laptop or account need a plan |
+| A. Motivation only | Welcome, rules, demos | Low risk, short | Wastes the highest-attention session |
+| B. Python and first ML lesson | Hands-on coding | Maximum head start | Overwhelms zero-Python students, no time for setup |
+| C. Paper-first hybrid (120 min, recommended) | Paper tour, reading skill, a paper-reading activity, course mechanics, setup | Gives the course a purpose, uses our own papers, prepares the final mini paper and poster | Students code nothing in Week 0: Python becomes homework and the Optimizer game opens Week 1 |
 
-I recommend **C**, as a separate 2-hour session. (First drafted at 150 minutes; cut to 120 once the session length was confirmed.)
+I recommend **C**.
 
 ### Agenda (120 min)
 | Min | Block |
 |---|---|
-| 0-8 | Pretest (optional, anonymous, ungraded), while the title slide is up |
-| 8-15 | Welcome and why: ML grounded in optimization. Demo (Evolusi Gambar) running |
-| 15-30 | How the course works (see below) |
-| 30-40 | Python for Go programmers, side by side: types, lists and dicts, indentation, functions, for/range, comprehensions |
-| 40-65 | Colab worksheet, exercises 1 to 6 (NumPy exercises 7 to 10 are homework) |
-| 65-70 | Break |
-| 70-105 | Small win: "Optimizer 20 baris". A mystery two-parameter function, 30-evaluation budget, random-search leaderboard, debrief |
-| 105-115 | Setup stations (Colab, GitHub, books). Unfinished items become pre-work |
-| 115-120 | Exit slip: one question and one worry |
+| 0-8 | Pretest (optional, anonymous, ungraded) |
+| 8-13 | Paper wall and agenda |
+| 13-43 | Four kinds of papers: pure research, applied (skin-tone bias and more), the KMA line (KMA, Improved Adaptive KMA, KomoTrip), paper to poster, poster versus course |
+| 43-53 | How to read a paper: an abstract in four colours, order of reading, five questions |
+| 53-78 | Detektif Paper: pairs fill a card on one of five papers, then share |
+| 78-83 | Break |
+| 83-91 | From papers to the course: objective, search space, budget; the Evolusi Gambar demo |
+| 91-106 | How the class works: rhythm, books and papers, grading, final project (mini paper and poster Demo Day), AI tools |
+| 106-116 | Setup stations (Colab, GitHub, books) |
+| 116-120 | Exit slip: one question and one worry |
 
 ### What to expect
 - **Workload:** about 5 to 6 hours per week (my assumption).
 - **Grading:** 40% weekly deliverables, 10% orals, 50% final project.
-- **Final project:** teams of 3, deployed demo, metaheuristic compared against a baseline.
+- **Final project:** teams of 3, deployed demo, metaheuristic compared against a baseline; the technical note is a mini paper and Demo Day is a mini poster session.
 - **Attendance:** proposal, at least 13 of 16 sessions to be eligible for the certificate. **Your call.**
 - **AI policy:** use any tool freely, no logs. Warm-ups and orals are closed-device. You are responsible for being able to explain your own work.
 

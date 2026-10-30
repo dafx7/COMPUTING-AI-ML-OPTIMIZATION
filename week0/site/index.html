@@ -24,14 +24,14 @@
     <p>Halaman ini memuat cara kerja kelas, penilaian, kebijakan alat AI, dan persiapan teknis. Isinya juga dibahas langsung pada sesi kickoff.</p>
 
     <p>
-      <a class="tombol" href="slide.html">Buka slide kickoff</a>
-      <a class="tombol sekunder" href="demo.html">Coba demo Evolusi Gambar</a>
+      <a class="tombol" href="demo.html">Coba demo Evolusi Gambar</a>
     </p>
 
     <nav class="toc" aria-label="Daftar isi">
       <strong>Daftar isi</strong>
       <ol>
         <li><a href="#tentang">Tentang kelas ini</a></li>
+        <li><a href="#paper">Belajar AI lewat paper</a></li>
         <li><a href="#ritme">Ritme dan beban mingguan</a></li>
         <li><a href="#peta">Peta 16 pekan</a></li>
         <li><a href="#nilai">Penilaian</a></li>
@@ -60,7 +60,41 @@
       <li>Merilis demo yang berjalan di alamat publik bersama timmu.</li>
     </ol>
 
-    <h2 id="ritme">2. Ritme dan beban mingguan</h2>
+    <h2 id="paper">2. Belajar AI lewat paper</h2>
+    <p>Buku mengajarkan dasar. Paper menunjukkan di mana bidang berada hari ini: setiap metode, model, dan hasil baru terbit lebih dulu sebagai paper. Itu sebabnya Pertemuan 0 dipakai untuk berkenalan dengan paper, sebelum kita menulis kode.</p>
+
+    <h3>Empat jenis paper</h3>
+    <ul>
+      <li><strong>Riset murni</strong>: ide atau algoritma baru, biasanya diuji pada soal standar.</li>
+      <li><strong>Riset terapan</strong>: AI dipakai atau diaudit pada masalah nyata.</li>
+      <li><strong>Bidang yang berkembang</strong>: satu ide diperbaiki dan dipakai oleh orang lain dari tahun ke tahun.</li>
+      <li><strong>Dari paper ke poster</strong>: hasil riset dikomunikasikan di konferensi.</li>
+    </ul>
+
+    <h3>Membaca paper dalam 10 menit</h3>
+    <p>Urutan: judul, abstrak, gambar dan tabel, kesimpulan dan keterbatasan, lalu metode bila perlu. Tanyakan lima hal pada setiap paper:</p>
+    <ol>
+      <li>Masalah apa yang dikerjakan?</li>
+      <li>Apa yang diusulkan atau dilakukan?</li>
+      <li>Bagaimana diuji?</li>
+      <li>Apa angka kuncinya?</li>
+      <li>Apa keterbatasannya?</li>
+    </ol>
+
+    <h3>Paper yang kita lihat di Pertemuan 0</h3>
+    <table>
+      <thead><tr><th scope="col">Jenis</th><th scope="col">Paper</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Riset murni</th><td>Reference-vector competitor pairing for constrained large-scale multi-objective competitive swarm optimisation <small>Siregar dan Suyanto, Telkom University</small></td></tr>
+        <tr><th scope="row">Riset terapan</th><td>An Empirical Analysis of Skin-Tone Bias and the Limitations of Random Oversampling in Dermatology AI <small>Siregar, Lhaksmana, Yusuf, konferensi IEEE 2026</small></td></tr>
+        <tr><th scope="row">Riset terapan</th><td>Diabetic Foot Ulcer Segmentation Using U-Net and EfficientNet-B0 with Boundary-Aware Loss on the FUSeg Dataset; Enhancing User-Side Fairness on Neural Collaborative Filtering Using GAN-Based Augmentation; Integration of Chain-of-Thought and Program-of-Thought on 4-bit Quantized Small Language Models for Financial Question Answering <small>konferensi IEEE 2026</small></td></tr>
+        <tr><th scope="row">Bidang yang berkembang</th><td><a href="https://doi.org/10.1016/j.asoc.2021.108043">Komodo Mlipir Algorithm</a> <small>Suyanto, Ariyanto, Ariyanto. Applied Soft Computing, vol. 114, 2022</small><br><a href="https://doi.org/10.1109/ACCESS.2022.3186308">Improved Adaptive Komodo Mlipir Algorithm</a> <small>Liu dan Zhang. IEEE Access, vol. 10, 2022</small><br><a href="https://peerj.com/articles/cs-3350">KomoTrip: a multi-day travel itinerary recommendation method based on the discrete komodo mlipir algorithm</a> <small>Baizal dkk. PeerJ Computer Science, 2025</small></td></tr>
+        <tr><th scope="row">Dari paper ke poster</th><td>Gradient-Free Token Eviction for Edge-Deployable Video-LLMs in Ecological Monitoring <small>Siregar, Lhaksmana, Palupi. Poster di IEEE TENCON 2026</small></td></tr>
+      </tbody>
+    </table>
+    <p>Tautan paper yang belum ada di tabel dibagikan mentor lewat kanal kelas.</p>
+
+    <h2 id="ritme">3. Ritme dan beban mingguan</h2>
     <table>
       <thead><tr><th scope="col">Bagian</th><th scope="col">Isi</th><th scope="col">Perkiraan waktu</th></tr></thead>
       <tbody>
@@ -71,7 +105,7 @@
     </table>
     <p>Totalnya sekitar <strong>5 sampai 6 jam per pekan</strong>. Angka ini perkiraan mentor. Mulai Pekan 9, sebagian waktu latihan berpindah ke proyek tim (sekitar 2,5 jam per pekan). Jika bebanmu terasa jauh lebih besar dari ini, sampaikan kepada mentor.</p>
 
-    <h2 id="peta">3. Peta 16 pekan</h2>
+    <h2 id="peta">4. Peta 16 pekan</h2>
     <p>Satu bab buku, kurang lebih satu pekan. Nomor bab dan bagian akan dibagikan lewat panduan baca setiap pekan.</p>
     <table>
       <thead><tr><th scope="col">Pekan</th><th scope="col">Tema dan bacaan utama</th></tr></thead>
@@ -94,9 +128,9 @@
         <tr><th scope="row">16</th><td>Hari demo proyek</td></tr>
       </tbody>
     </table>
-    <p>UDL adalah <em>Understanding Deep Learning</em>. Luke adalah <em>Essentials of Metaheuristics</em>. Keduanya dijelaskan di bagian 8.</p>
+    <p>UDL adalah <em>Understanding Deep Learning</em>. Luke adalah <em>Essentials of Metaheuristics</em>. Keduanya dijelaskan di bagian 9.</p>
 
-    <h2 id="nilai">4. Penilaian</h2>
+    <h2 id="nilai">5. Penilaian</h2>
     <table>
       <thead><tr><th scope="col">Komponen</th><th scope="col">Bobot</th><th scope="col">Keterangan</th></tr></thead>
       <tbody>
@@ -107,7 +141,7 @@
     </table>
     <p>Cek lisan pendek (sekitar 7 menit) meminta kamu menjelaskan kodemu sendiri dan memprediksi hasil perubahan kecil. Tujuannya memastikan pemahaman setiap orang, apa pun alat yang dipakai untuk menulis kode.</p>
 
-    <h2 id="proyek">5. Proyek akhir</h2>
+    <h2 id="proyek">6. Proyek akhir</h2>
     <ul>
       <li>Tim 3 orang (2 orang bila jumlah ganjil). Tim dibentuk mentor di Pekan 8 dengan mempertimbangkan survei keterampilan singkat.</li>
       <li>Setiap proyek berisi <strong>model ML</strong> dan <strong>lapisan optimasi</strong> yang benar-benar menentukan hasil. Lapisan optimasi dibandingkan dengan sedikitnya satu pembanding (misalnya pencarian acak) pada anggaran evaluasi yang sama, dengan sedikitnya 10 kali percobaan. Hasil yang kalah dari pembanding tetap dapat nilai bagus bila analisisnya jujur dan tajam.</li>
@@ -116,7 +150,7 @@
       <li>Jalur waktu: proposal Pekan 9, baseline Pekan 11, tinjauan prototipe Pekan 12, deploy percobaan Pekan 13, versi awal Pekan 14, cek lisan Pekan 15, demo Pekan 16.</li>
     </ul>
 
-    <h2 id="ai">6. Kebijakan alat AI</h2>
+    <h2 id="ai">7. Kebijakan alat AI</h2>
     <p>Kamu boleh memakai alat AI apa pun, kapan pun, untuk latihan maupun proyek. Tidak ada yang mencatat pemakaianmu. Tiga hal tetap berlaku:</p>
     <ol>
       <li>Kuis pembuka dan cek lisan dilakukan <strong>tanpa perangkat</strong>.</li>
@@ -125,11 +159,11 @@
     </ol>
     <div class="catatan"><p>Alasannya praktis. Asisten AI dapat menulis kode pelatihan yang tampak benar tetapi keliru, misalnya data uji yang bocor ke data latih. Orang yang belum memahami dasarnya tidak akan melihat kekeliruan itu.</p></div>
 
-    <h2 id="hadir">7. Kehadiran</h2>
+    <h2 id="hadir">8. Kehadiran</h2>
     <!-- KONFIRMASI SEBELUM DIPUBLIKASIKAN: ambang kehadiran di bawah ini adalah usulan, belum diputuskan koordinator. -->
     <p>Kehadiran menjadi syarat dan tidak dihitung sebagai komponen nilai. Usulan ambang: minimal <strong>13 dari 16 pertemuan</strong> (Pertemuan 0 tidak dihitung). Jika kamu tidak dapat hadir, kabari mentor sebelum kelas dan kerjakan materi pekan itu sendiri.</p>
 
-    <h2 id="buku">8. Dua buku dan cara mendapatkannya</h2>
+    <h2 id="buku">9. Dua buku dan cara mendapatkannya</h2>
     <p>Kedua buku berbahasa Inggris dan gratis secara sah dari penulisnya. Unduh hanya dari tautan resmi di bawah. Hindari salinan dari situs lain, karena sering usang atau tidak lengkap. Setiap pekan mentor menerbitkan panduan baca berbahasa Indonesia sebagai komentar yang ditulis sendiri oleh mentor. Panduan itu tidak menerjemahkan buku.</p>
 
     <h3>Understanding Deep Learning (UDL)</h3>
@@ -150,7 +184,7 @@
 
     <p>Nomor halaman yang disebut dalam panduan adalah nomor <strong>yang tercetak pada halaman</strong>. Di penampil PDF, tambahkan <strong>14</strong> untuk UDL (halaman cetak 17 ada di halaman PDF 31) dan <strong>2</strong> untuk Luke versi 2.4 (halaman cetak 25 ada di halaman PDF 27).</p>
 
-    <h2 id="siap">9. Persiapan teknis</h2>
+    <h2 id="siap">10. Persiapan teknis</h2>
     <p>Total sekitar 45 menit. Yang belum selesai akan dibantu di stasiun persiapan pada sesi kickoff.</p>
     <ul class="cek">
       <li>
@@ -166,7 +200,7 @@
       <li>
         <input type="checkbox" id="c3">
         <label for="c3"><strong>Unduh kedua buku</strong> <span class="waktu">(10 menit)</span><br>
-        Dari tautan resmi di bagian 8. Simpan di laptop atau ponsel agar dapat dibaca tanpa internet.</label>
+        Dari tautan resmi di bagian 9. Simpan di laptop atau ponsel agar dapat dibaca tanpa internet.</label>
       </li>
       <li>
         <input type="checkbox" id="c4">
@@ -180,14 +214,14 @@
       </li>
     </ul>
 
-    <h3>Lembar kerja Pertemuan 0 (dikerjakan saat sesi)</h3>
-    <p>Dua notebook akan dikerjakan berpasangan di kelas. Kamu boleh membukanya lebih dulu.</p>
+    <h3>Lembar kerja (kerjakan sebelum Pertemuan 1)</h3>
+    <p>Notebook pertama dikerjakan sendiri di rumah. Notebook kedua dikerjakan berpasangan di kelas Pertemuan 1, kamu boleh membukanya lebih dulu.</p>
     <ul>
       <li><a href="https://colab.research.google.com/github/dafx7/COMPUTING-AI-ML-OPTIMIZATION/blob/main/week0/notebooks/01_python_untuk_programmer_go.ipynb">Python untuk programmer Go</a></li>
       <li><a href="https://colab.research.google.com/github/dafx7/COMPUTING-AI-ML-OPTIMIZATION/blob/main/week0/notebooks/02_optimizer_20_baris.ipynb">Optimizer 20 baris</a></li>
     </ul>
 
-    <h2 id="tanya">10. Pertanyaan umum</h2>
+    <h2 id="tanya">11. Pertanyaan umum</h2>
     <details>
       <summary>Saya tidak punya laptop. Apakah bisa ikut?</summary>
       <p>Bisa. Beri tahu mentor sebelum Pertemuan 0 agar kamu dipasangkan dengan teman yang membawa laptop. Colab berjalan di peramban. Ponsel cukup untuk membaca buku, tetapi tidak nyaman untuk mengerjakan notebook.</p>
@@ -202,7 +236,7 @@
     </details>
     <details>
       <summary>Bolehkah saya memakai ChatGPT, Claude, atau Gemini?</summary>
-      <p>Boleh. Lihat bagian 6 untuk tiga hal yang tetap berlaku.</p>
+      <p>Boleh. Lihat bagian 7 untuk tiga hal yang tetap berlaku.</p>
     </details>
     <details>
       <summary>Koneksi internet kampus lambat.</summary>
@@ -213,7 +247,7 @@
       <p>Halaman ini tidak memuat pelacak, iklan, atau skrip dari pihak ketiga, dan tidak meminta akun atau data pribadi.</p>
     </details>
 
-    <h2 id="p1">11. Untuk Pertemuan 1</h2>
+    <h2 id="p1">12. Untuk Pertemuan 1</h2>
     <ul>
       <li>Baca UDL bagian 1.1 (halaman 1 sampai 6) dan bab 2 (halaman 17 sampai 22).</li>
       <li>Bawa laptop yang sudah dapat membuka Colab.</li>
