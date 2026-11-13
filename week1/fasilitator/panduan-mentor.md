@@ -109,7 +109,7 @@ Common mistakes: forgetting that `ŵ` is negative; using `Σxy / Σx²` (no cent
 
 ## 7. Exercises 4 and 5 (Colab, pure Python)
 
-The notebook starts with six short Python items (variables, lists, `for`, `sum` and list comprehensions, `zip`, functions), each with a Go comparison. Then students write `hitung_w`, `hitung_a`, `prediksi` and `rss`. Each one is tested on the Go-car data first, because students already know the answer from the slides. Every exercise cell has an automatic check that prints `Benar.` or a hint.
+Done as live coding: the lead mentor types on the projector and students follow in their own copy. The notebook has no separate Python tutorial; Python is introduced as it is needed. Students write `rata_rata`, `hitung_w`, `hitung_a`, `prediksi` and `rss`. Each one is tested on the Go-car data first, because students already know the answer from the slides. Every exercise cell has an automatic check that prints `Benar.` or a hint.
 
 Expected values on the 19 battery records: `ŵ = −0.8270`, `â = 97.6368`, `RSS = 16.23`, empty after about 118 minutes, prediction for 180 minutes −51.2%. `statistics.linear_regression` (Python standard library, 3.10 and newer) must give the same slope and intercept.
 
