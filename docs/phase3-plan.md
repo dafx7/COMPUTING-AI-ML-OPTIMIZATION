@@ -35,7 +35,7 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 | Wk | Theme | Source | Deliverable | Flag |
 |---|---|---|---|---|
 | 0 | Kickoff, Python bridge, first optimizer | Whirlwind Tour of Python (CC0) | Setup check, optional pretest | Separate session |
-| 1 | Learning = minimizing a loss | UDL §1.1, ch2 | Notebook + exit question | Week 1 site |
+| 1 | Linear regression as optimization (least squares) | UDL §1.1, ch2 | Pure-Python notebook + 2 questions | Derived at the front |
 | 2 | Gradient descent | UDL ch6 §6.1-6.2 | GD notebook + finite-difference check | |
 | 3 | Loss for classification | UDL ch5 | Logistic regression from scratch | |
 | 4 | Neural networks | UDL ch3 + ch4 | Forward pass + hand-fit puzzle | Merged chapters |
@@ -54,21 +54,22 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 
 ## 2. Week by week
 
-### Week 1. Learning is minimizing a loss
-- **Can do:** state in their own words what model, parameter, loss and training are. Compute the MSE of a line on 4 points by hand. Find good intercept and slope by grid search and by random search and count evaluations. Explain why trying every value fails at a million parameters.
-- **Source:** UDL §1.1 (pp 1-6), ch2 (pp 17-24). Notebook 2.1. Optional Notebook 1.1.
-- **Hands-on:** Week 1 site (loss landscape), then a Colab that fits a line with random search in NumPy.
-- **Deliverable:** notebook plus a 3-sentence exit answer: why can't we try all parameter values for a model with a million parameters?
-- **Class adds:** the vocabulary used all course: objective, search space, evaluation budget.
-- **AI:** allowed. Suggested: ask an assistant to explain MSE versus MAE, then confirm with a hand calculation.
-- **Feeds project:** the objective/search space/budget wording used in the proposal.
+### Week 1. Linear regression as an optimization problem (least squares)
+- **Can do:** write linear regression as an optimization problem (decision variables `w` and `a`, objective SSE `E(w, a) = Σ (yᵢ − w·xᵢ − a)²`, no constraints). Explain why setting the partial derivatives to zero gives the minimum. Compute `ŵ` and `â` by hand for a small table and in pure Python for a larger one. Interpret the slope and intercept, and recognise extrapolation.
+- **Source:** UDL §1.1 (pp 1-6), ch2 (pp 17-24), Problem 2.2 (optional). Course material on least squares (Go-car example by Dr. Didit Adytia).
+- **Format:** the lead mentor derives `â = ȳ − w·x̄` and `ŵ = Σ(xᵢ − x̄)(yᵢ − ȳ) / Σ(xᵢ − x̄)²` at the front; students do one step (∂E/∂a) themselves. Teaching example: Go-car fares (positive relationship). Exercises: phone battery (negative relationship).
+- **Hands-on:** exercises 1 to 3 on paper (compute `ŵ`, `â`; compare SSE with a two-point line; interpret and predict, including "when does the battery hit 0%"). Exercises 4 to 5 in Colab, pure Python without NumPy: write the formula, check it against `statistics.linear_regression`, then break it (no variation in `x`; one typo as an outlier).
+- **Deliverable:** notebook plus two understanding questions (why the formula gives the minimum; what a negative slope and an extrapolated prediction mean).
+- **Class adds:** the optimization vocabulary used all course (decision variables, objective function, constraints), and the point that a closed form exists only for special cases.
+- **AI:** allowed. Suggested: ask an assistant to derive ∂E/∂w, then check it against the derivation from class.
+- **Feeds project:** the objective/decision-variable wording used in the proposal; a baseline you can compute exactly.
 
 ### Week 2. Gradient descent
-- **Can do:** derive the gradient of MSE for a line. Write a GD loop in NumPy. Predict what a too-small and too-large learning rate does. Say what SGD changes.
+- **Can do:** use the Week 1 derivatives as a gradient. Write a GD loop. Predict what a too-small and too-large learning rate does. Say what SGD changes.
 - **Source:** UDL ch6 §6.1-6.2 (pp 77-85). Notebooks 6.1, 6.2.
-- **Hands-on:** learning-rate lab, then GD against W1's random search at equal evaluation counts.
+- **Hands-on:** learning-rate lab on the Week 1 data, checking that GD converges to the exact `ŵ`, `â` from Week 1. Then a model with no closed form, where GD is the only option.
 - **Deliverable:** GD notebook with loss curves for 3 learning rates and a short interpretation.
-- **Class adds:** the gradient is free direction information. Metaheuristics (W9+) assume you do not have it. Count evaluations honestly.
+- **Class adds:** the gradient is free direction information. Week 1 had an exact answer; most models do not. Metaheuristics (W9+) assume you do not even have the gradient. Count evaluations honestly.
 - **AI:** **required** verification: take the gradient formula an assistant gives and check it with a finite-difference estimate.
 - **Feeds project:** baseline-first habit, loss-curve plots.
 
