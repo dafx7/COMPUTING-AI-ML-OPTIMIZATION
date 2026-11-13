@@ -41,10 +41,10 @@ The course material also writes the two-point line as `y = a + mx` on one slide 
 |---|---|---|---|
 | 0–10 | 1–6 | Problem, data table, data plot, the line model | Lead |
 | 10–25 | 7–12 | Which line fits best (vote), humans vs computers, error, RSS, RSS of the four lines, the optimization framing | Lead |
-| 25–45 | 13–20 | Calculus reminder, derivation, the answer is line C, meaning, why it is a minimum | Lead at the board; students fill in one step |
-| 45–70 | 21–22 | Exercises 1 to 3 on paper, in pairs | All mentors walk |
-| 70–105 | 23 | Exercises 4 and 5 in Colab | All mentors walk |
-| 105–120 | 24–25 | Discussion and Week 2 preview | Lead |
+| 25–50 | 13–23 | Calculus reminder, full derivation (one step by students), the answer is line C, meaning, why it is a minimum | Lead at the board; students fill in one step |
+| 50–75 | 24–25 | Exercises 1 to 3 on paper, in pairs | All mentors walk |
+| 75–105 | 26 | Exercises 4 and 5 in Colab | All mentors walk |
+| 105–120 | 27–28 | Discussion and Week 2 preview | Lead |
 
 There is no opening quiz; the session starts with the problem.
 
@@ -58,7 +58,7 @@ The four lines on the vote slide (not shown to students as equations):
 |---|---|---|
 | A | `32000 + 2500x` (too flat) | 1,392.1 million |
 | B | `8800 + 5040x` (the two-point line from the course material) | 355.2 million |
-| C | `3148.8 + 5737.7x` (least squares, revealed on slide 18) | 296.9 million |
+| C | `3148.8 + 5737.7x` (least squares, revealed on slide 21) | 296.9 million |
 | D | `−21000 + 8500x` (too steep) | 1,105.9 million |
 
 How it plays out:
@@ -67,27 +67,29 @@ How it plays out:
 - **Slides 9 and 10.** Error for one trip, why we square (positive and negative errors cancel), then RSS: one number per line.
 - **Slide 11.** The computer compares the four numbers: C wins. Then the real question: there are infinitely many lines. Is C the best of all of them? That turns it into an optimization problem (slide 12).
 
-## 5. The derivation (slides 13 to 18)
+## 5. The derivation (slides 13 to 21)
 
-Write it on the board, slowly. The slides show each line, so you can point instead of writing if time is short.
+The slides show every line of the derivation, one step per row, with the reason for that step on the right. You can point at the slide line by line, or write along on the board. Each sum runs from `i = 1` to `n`.
 
 **Calculus reminder (slide 13).** Ask: *"Siapa yang sudah belajar turunan parsial?"* If many hands stay down, give the one rule: *"Saat menurunkan terhadap satu variabel, anggap semua huruf lain sebagai angka biasa."* Example: `d/da (5 − a)² = 2(5 − a)(−1)`.
 
-**Step 1, students' turn (slide 14, 3 minutes).** Expected answer:
+**Step 1, students' turn (slide 14, 3 minutes).** Then slide 15 shows the answer in three lines: the derivative of a sum is the sum of derivatives; chain rule with inner derivative −1; pull out −2:
 `∂RSS/∂a = Σ 2(yᵢ − w·xᵢ − a)(−1) = −2 Σ (yᵢ − w·xᵢ − a)`.
 
-**Step 1, solve (slide 15).** Set to zero, divide by −2: `Σyᵢ − w·Σxᵢ − n·a = 0`. Divide by `n`: `ȳ − w·x̄ − a = 0`, so `â = ȳ − w·x̄` (4).
+**Step 1, solve (slide 16).** Set to zero, divide by −2: `Σyᵢ − w·Σxᵢ − n·a = 0`. Divide by `n`: `ȳ − w·x̄ − a = 0`, so `â = ȳ − w·x̄` (4).
 Say: *"Artinya garis terbaik selalu lewat titik (x̄, ȳ), pusat data."*
 
-**Step 2 (slide 16).** `∂RSS/∂w = −2 Σ xᵢ(yᵢ − w·xᵢ − a)`. Set to zero, substitute (4): `0 = Σ xᵢ(yᵢ − w·xᵢ − ȳ + w·x̄)`. Group the `w` terms: `Σ xᵢ(yᵢ − ȳ) = w·Σ xᵢ(xᵢ − x̄)`, which gives (6). The substitution is where students get lost; pause there.
+**Step 2, derivative (slide 17).** Chain rule again, inner derivative `−xᵢ`: `∂RSS/∂w = −2 Σ xᵢ(yᵢ − w·xᵢ − a)` (5). Set to zero and divide by −2: `Σ xᵢ(yᵢ − w·xᵢ − a) = 0`.
 
-**(6) to (7), the take-home challenge.** Because `Σ(xᵢ − x̄) = 0`, both `Σ x̄(yᵢ − ȳ)` and `Σ x̄(xᵢ − x̄)` are zero, so they can be subtracted from the numerator and denominator of (6) without changing it. That turns `xᵢ` into `(xᵢ − x̄)`.
+**Step 2, solve (slide 18).** Substitute (4): `Σ xᵢ(yᵢ − w·xᵢ − ȳ + w·x̄) = 0`. Regroup: `Σ xᵢ[(yᵢ − ȳ) − w(xᵢ − x̄)] = 0`. Split the sum, `w` comes out: `Σ xᵢ(yᵢ − ȳ) − w·Σ xᵢ(xᵢ − x̄) = 0`. Solve: (6). The substitution is where students get lost; pause there.
 
-**Slide 18, the reveal.** Line C from the vote is the least squares line: `x̄ = 9.133 km`, `ȳ = Rp55,553.3`, `ŵ = 5,737.72`, `â = 3,148.78`, RSS = 296,861,703. Line B has RSS 355,166,000, about 20% larger. No other line has a smaller RSS on this data. Prediction for 20 km: about Rp117,903 (outside the 5 to 13 km data, so it is extrapolation).
+**Step 3, (6) to (7) (slide 19).** Because `Σ(xᵢ − x̄) = Σxᵢ − n·x̄ = 0` (and likewise for `y`), both `x̄·Σ(yᵢ − ȳ)` and `x̄·Σ(xᵢ − x̄)` are zero. Subtracting them from the numerator and denominator of (6) changes nothing and turns `xᵢ` into `(xᵢ − x̄)`: equation (7). Slide 20 collects (4) and (7). Optional take-home: show that `ŵ = cov(X, Y) / cov(X, X)`.
+
+**Slide 21, the reveal.** Line C from the vote is the least squares line: `x̄ = 9.133 km`, `ȳ = Rp55,553.3`, `ŵ = 5,737.72`, `â = 3,148.78`, RSS = 296,861,703. Line B has RSS 355,166,000, about 20% larger. No other line has a smaller RSS on this data. Prediction for 20 km: about Rp117,903 (outside the 5 to 13 km data, so it is extrapolation).
 
 ## 6. Exercises 1 to 3 (paper): full working
 
-Data (slide 21): `x = 0, 10, 20, 30, 40` minutes, `y = 97, 89, 80, 74, 66` %.
+Data (slide 24): `x = 0, 10, 20, 30, 40` minutes, `y = 97, 89, 80, 74, 66` %.
 
 | x | y | x − x̄ | y − ȳ | (x − x̄)(y − ȳ) | (x − x̄)² |
 |---|---|---|---|---|---|
@@ -121,7 +123,7 @@ Python problems you will see:
 - Cells run out of order after a restart: *Runtime → Run all*.
 - `menit.index(40)` is the position, not the value: change `baterai_salah[i]`, not `baterai`.
 
-## 8. Discussion (slide 24): expected answers
+## 8. Discussion (slide 27): expected answers
 
 1. A straight line with squared error makes RSS a bowl whose derivatives are linear in `w` and `a`, so the two "derivative = 0" equations can be solved directly.
 2. Real data has typos and outliers, and squared error is sensitive to them (Week 7 returns to honest evaluation).
