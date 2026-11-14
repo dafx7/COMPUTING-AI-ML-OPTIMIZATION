@@ -38,7 +38,7 @@ Di sinilah inti pertemuan ini. Kita manusia bisa merasakan garis mana yang pas. 
 
 Mulai dari satu perjalanan. Selisih antara tarif sebenarnya dan prediksi garis disebut **error** atau residual:
 
-> **εᵢ = yᵢ − ŷᵢ**
+> **eᵢ = yᵢ − ŷᵢ**
 
 ![Garis putus-putus menunjukkan error setiap perjalanan terhadap garis B](img/error-garis-b.png)
 
@@ -69,27 +69,91 @@ Cari w dan a yang membuat RSS sekecil mungkin. Untuk garis lurus, kalkulus membe
 
 ## Menurunkan rumusnya, langkah demi langkah
 
-Bagian ini yang membuat pertemuan kami berbeda. Rumusnya tidak kami tempel di slide. Kami menurunkannya di depan kelas, satu baris aljabar per langkah, dan satu langkah dikerjakan sendiri oleh peserta secara berpasangan.
+Bagian ini yang membuat pertemuan kami berbeda. Rumusnya tidak kami tempel di slide. Kami menurunkannya bersama di papan tulis, satu baris aljabar per langkah, dan peserta ikut mengerjakan salah satu turunannya secara berpasangan. Berikut derivasi lengkapnya, persis seperti di papan. Semua Σ berarti jumlah dari i = 1 sampai n, dan x̄, ȳ adalah rata-rata x dan y.
 
-**Langkah 1, turunan terhadap a** (dikerjakan peserta selama tiga menit). Dengan aturan rantai, turunan bagian dalamnya adalah −1:
+### Titik awal
 
-> ∂RSS/∂a = −2 Σ (yᵢ − w·xᵢ − a)
+| Persamaan | Alasan |
+|---|---|
+| ŷᵢ = w·xᵢ + a | model garis |
+| eᵢ = yᵢ − ŷᵢ | error (residual) setiap data |
+| RSS(w, a) = Σ eᵢ² = Σ (yᵢ − ŷᵢ)² = Σ (yᵢ − w·xᵢ − a)² | jumlah kuadrat error, ditulis dalam w dan a |
 
-Samakan dengan nol, bagi −2, pecah jumlahnya, dan ingat bahwa Σa = n·a. Setelah dibagi n, rata-rata muncul dengan sendirinya:
+Di titik terendah, kedua turunan parsial bernilai nol. Jadi kita turunkan RSS terhadap w dan terhadap a, lalu samakan dengan nol.
 
-> **â = ȳ − w·x̄**
+### Langkah 1: turunan terhadap w
+
+| Persamaan | Alasan |
+|---|---|
+| ∂RSS/∂w = Σ 2(yᵢ − w·xᵢ − a)·(−xᵢ) | aturan rantai: turunan u² adalah 2u·u′, dan turunan (yᵢ − w·xᵢ − a) terhadap w adalah −xᵢ |
+| = −2 Σ (xᵢyᵢ − w·xᵢ² − a·xᵢ) = 0 | kalikan −xᵢ ke dalam kurung, lalu samakan dengan nol |
+| Σ (xᵢyᵢ − w·xᵢ² − a·xᵢ) = 0 | bagi kedua ruas dengan −2 |
+| Σ xᵢyᵢ − Σ w·xᵢ² − Σ a·xᵢ = 0 | pecah jumlahnya |
+| Σ xᵢyᵢ − w Σ xᵢ² − a Σ xᵢ = 0 | w dan a tidak bergantung pada i, jadi keluar dari Σ |
+| **Σ xᵢyᵢ = w Σ xᵢ² + a Σ xᵢ** | pindahkan ruas; simpan sebagai persamaan (I) |
+
+### Langkah 2: turunan terhadap a
+
+Langkah ini dikerjakan peserta sendiri selama tiga menit sebelum kami bahas.
+
+| Persamaan | Alasan |
+|---|---|
+| ∂RSS/∂a = Σ 2(yᵢ − w·xᵢ − a)·(−1) | aturan rantai; turunan (yᵢ − w·xᵢ − a) terhadap a adalah −1 |
+| = −2 Σ (yᵢ − w·xᵢ − a) = 0 | keluarkan −2, samakan dengan nol |
+| Σ (yᵢ − w·xᵢ − a) = 0 | bagi dengan −2 |
+| Σ yᵢ − Σ w·xᵢ − Σ a = 0 | pecah jumlahnya |
+| Σ yᵢ − w Σ xᵢ − a·n = 0 | a dijumlah sebanyak n kali, jadi Σa = a·n |
+| Σ yᵢ = w Σ xᵢ + a·n | pindahkan ruas |
+| (1/n) Σ yᵢ = (1/n) w Σ xᵢ + a | bagi kedua ruas dengan n |
+| a = (1/n) Σ yᵢ − w (1/n) Σ xᵢ | pindahkan ruas |
+| **â = ȳ − w·x̄** | (1/n) Σ yᵢ = ȳ dan (1/n) Σ xᵢ = x̄ |
 
 Artinya garis terbaik selalu melewati titik (x̄, ȳ), pusat data.
 
-**Langkah 2, turunan terhadap w.** Aturan rantai lagi, kali ini turunan bagian dalamnya −xᵢ:
+### Langkah 3: masukkan â ke persamaan (I)
 
-> ∂RSS/∂w = −2 Σ xᵢ (yᵢ − w·xᵢ − a)
+| Persamaan | Alasan |
+|---|---|
+| w Σ xᵢ² + a Σ xᵢ = Σ xᵢyᵢ | persamaan (I) |
+| w Σ xᵢ² + (ȳ − w·x̄) Σ xᵢ = Σ xᵢyᵢ | ganti a dengan ȳ − w·x̄ |
+| w Σ xᵢ² + ȳ Σ xᵢ − w·x̄ Σ xᵢ = Σ xᵢyᵢ | buka kurung |
+| w Σ xᵢ² − w·x̄ Σ xᵢ = Σ xᵢyᵢ − ȳ Σ xᵢ | suku tanpa w pindah ke kanan |
+| w (Σ xᵢ² − x̄ Σ xᵢ) = Σ xᵢyᵢ − ȳ Σ xᵢ | keluarkan w |
+| **ŵ = (Σ xᵢyᵢ − ȳ Σ xᵢ) / (Σ xᵢ² − x̄ Σ xᵢ)** | bagi kedua ruas |
 
-Samakan dengan nol, masukkan â dari langkah 1, kelompokkan suku y dan suku w, lalu selesaikan untuk w.
+Rumus ini sudah benar, tetapi bisa ditulis lebih rapi. Pembilang dan penyebutnya kita olah satu per satu, memakai satu fakta: Σ xᵢ = n·x̄ dan Σ yᵢ = n·ȳ.
 
-**Langkah 3, merapikan.** Karena selisih terhadap rata-rata selalu berjumlah nol, Σ(xᵢ − x̄) = 0, hasilnya bisa ditulis dalam bentuk yang simetris:
+### Langkah 4: merapikan pembilang
+
+| Persamaan | Alasan |
+|---|---|
+| Σ xᵢyᵢ − ȳ Σ xᵢ | pembilang dari langkah 3 |
+| = Σ xᵢyᵢ − n·x̄·ȳ | Σ xᵢ = n·x̄ |
+| = Σ xᵢyᵢ − n·x̄·ȳ − n·x̄·ȳ + n·x̄·ȳ | tambah lalu kurangi n·x̄·ȳ (nilainya tidak berubah) |
+| = Σ xᵢyᵢ − ȳ Σ xᵢ − x̄ Σ yᵢ + Σ x̄·ȳ | n·x̄·ȳ ditulis ulang sebagai ȳ Σ xᵢ, x̄ Σ yᵢ, dan Σ x̄·ȳ |
+| = Σ (xᵢyᵢ − xᵢ·ȳ − x̄·yᵢ + x̄·ȳ) | gabungkan menjadi satu jumlah |
+| **= Σ (xᵢ − x̄)(yᵢ − ȳ)** | faktorkan |
+
+### Langkah 5: merapikan penyebut
+
+| Persamaan | Alasan |
+|---|---|
+| Σ xᵢ² − x̄ Σ xᵢ | penyebut dari langkah 3 |
+| = Σ xᵢ² − n·x̄² | Σ xᵢ = n·x̄ |
+| = Σ xᵢ² − 2n·x̄² + n·x̄² | tulis −n·x̄² sebagai −2n·x̄² + n·x̄² |
+| = Σ xᵢ² − 2x̄ Σ xᵢ + Σ x̄² | 2n·x̄² = 2x̄ Σ xᵢ, dan n·x̄² = Σ x̄² |
+| = Σ (xᵢ² − 2x̄·xᵢ + x̄²) | gabungkan menjadi satu jumlah |
+| **= Σ (xᵢ − x̄)²** | bentuk kuadrat sempurna |
+
+### Hasil akhir
 
 > **ŵ = Σ (xᵢ − x̄)(yᵢ − ȳ) / Σ (xᵢ − x̄)²**
+>
+> **â = ȳ − ŵ·x̄**
+
+Jika pembilang dan penyebut ŵ sama-sama dibagi n − 1, keduanya menjadi kovarians x dan y serta varians x. Jadi ŵ juga bisa dibaca sebagai cov(X, Y) / var(X).
+
+Ingin membaca bukti yang sama dalam bentuk formal? Lihat [Ordinary least squares for simple linear regression](https://statproofbook.github.io/P/slr-ols.html) di The Book of Statistical Proofs (Joram Soch), yang menjadi salah satu inspirasi alur derivasi kami.
 
 Untuk data Go-car hasilnya ŵ ≈ 5.737,7 dan â ≈ 3.148,8: setiap tambahan 1 km, tarif naik sekitar Rp5.738. Dan ternyata **garis C dari voting tadi adalah garis ini**. Tidak ada garis lain dengan RSS lebih kecil pada data tersebut.
 
