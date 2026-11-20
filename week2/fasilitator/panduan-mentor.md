@@ -86,7 +86,7 @@ The first cell holds helpers (data, plots, checks): run it, do not read it in cl
 **Common mistakes.**
 - Updating w first, then computing the gradient for a with the new w. Both gradients must use the old values (`w, a = w - eta*gw, a - eta*ga` does this).
 - Forgetting the minus sign in the gradient (GD then climbs: MSE grows every step).
-- `np.sum` instead of `np.mean` in the gradient: works, but the good η is 5 times smaller.
+- Forgetting `/ n` in the gradient (that is, using the RSS gradient): it still works, but the good η becomes n = 5 times smaller. The notebook writes `np.sum(...) / n` on purpose, so the code mirrors the formula: `np.sum` is Σ and `/ n` is 1/n.
 - Re-running cells out of order after editing a function: use Runtime, then Run all.
 
 If time runs short, do C3 as a demo on the projector.
