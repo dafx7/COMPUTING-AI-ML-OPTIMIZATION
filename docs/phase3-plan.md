@@ -65,13 +65,14 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 - **Feeds project:** the objective/decision-variable wording used in the proposal; a baseline you can compute exactly.
 
 ### Week 2. Gradient descent
-- **Can do:** use the Week 1 derivatives as a gradient. Write a GD loop. Predict what a too-small and too-large learning rate does. Say what SGD changes.
-- **Source:** UDL ch6 §6.1-6.2 (pp 77-85). Notebooks 6.1, 6.2.
-- **Hands-on:** learning-rate lab on the Week 1 data, checking that GD converges to the exact `ŵ`, `â` from Week 1. Then a model with no closed form, where GD is the only option.
-- **Deliverable:** GD notebook with loss curves for 3 learning rates and a short interpretation.
-- **Class adds:** the gradient is free direction information. Week 1 had an exact answer; most models do not. Metaheuristics (W9+) assume you do not even have the gradient. Count evaluations honestly.
-- **AI:** **required** verification: take the gradient formula an assistant gives and check it with a finite-difference estimate.
-- **Feeds project:** baseline-first habit, loss-curve plots.
+- **Can do:** explain and apply the update rule `w ← w − η·f′(w)`. Derive ∂MSE/∂w and ∂MSE/∂a (Week 1's derivatives with 1/n). Predict what a too-small and too-large learning rate does, and explain it with the factor (1 − 2ηc). Write a GD loop in NumPy that reaches Week 1's exact answer. Find a good learning rate for a dataset with a sweep (log scale, then zoom; best value just below the point where it blows up). Say what SGD changes.
+- **Source:** UDL ch6 §6.1-6.2 (pp 77-85).
+- **Format:** no game in the current version (Turun Lembah in `week2/game/` is optional). Board: the update rule, four hand steps on (w − 3)², learning-rate predictions on paper, the MSE gradient derivation, one hand step on the battery data (x in tens of minutes).
+- **Hands-on:** notebook with a helper cell (data, plots, checks); students write MSE, the gradient (checked numerically), the GD loop and the learning-rate sweep. The same sweep with x in minutes shows that the best η belongs to the dataset and that scale matters.
+- **Deliverable:** the notebook and two understanding questions (why the best η sits just below the cliff; why it changes when x is in minutes).
+- **Class adds:** Week 1 had an exact answer; most models do not. "Best" needs a budget (Week 0's anggaran). Metaheuristics (W9+) assume you do not even have the gradient.
+- **AI:** **required** verification: take a gradient formula from an assistant and check it numerically (the notebook's `cek_gradien` shows how).
+- **Feeds project:** baseline-first habit, loss curves, learning-rate sweeps.
 
 ### Week 3. Loss functions and classification
 - **Can do:** explain a loss as a penalty chosen for the task. Write MSE and binary cross-entropy. Train logistic regression with GD. Split data into train and test and report both. Explain why accuracy misleads on imbalanced data.
