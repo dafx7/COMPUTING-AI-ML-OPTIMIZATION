@@ -1,6 +1,6 @@
 # Week 3 mentor guide: logistic regression (2 hours)
 
-Mentor-facing (English, with Indonesian lines to say aloud). Projector deck: `../slides/Pertemuan-3-Regresi-Logistik.pptx`. Student notebook: `../notebooks/01_regresi_logistik.ipynb`. Answer key: `kunci/01_regresi_logistik_kunci.ipynb`.
+Mentor-facing (English, with Indonesian lines to say aloud). Projector deck: `../slides/Pertemuan-3-Logistic-Regression.pptx`. Student notebook: `../notebooks/01_logistic_regression.ipynb`. Answer key: `kunci/01_logistic_regression_kunci.ipynb`.
 
 ## 1. Idea of the session
 
@@ -151,6 +151,6 @@ Train/test splits are in Week 7. Do not open that topic today.
 
 ## 7. Before class
 
-- **Colab link.** The badge in the notebook points to `main`. Until the branch is merged, upload `week3/notebooks/01_regresi_logistik.ipynb` to Colab (File, Upload notebook) or share the file.
+- **Colab link.** The badge in the notebook points to `main`. Until the branch is merged, upload `week3/notebooks/01_logistic_regression.ipynb` to Colab (File, Upload notebook) or share the file.
 - **Calculators.** Phones are fine for e^(−z) on slide 7.
 - **Reading for Week 4:** UDL sections 3.1 to 3.4 (printed pages 25 to 35) and 4.1 to 4.3 (pages 41 to 48).
