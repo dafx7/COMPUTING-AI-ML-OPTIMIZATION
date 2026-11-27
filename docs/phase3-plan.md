@@ -74,12 +74,13 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 - **AI:** **required** verification: take a gradient formula from an assistant and check it numerically (the notebook's `cek_gradien` shows how).
 - **Feeds project:** baseline-first habit, loss curves, learning-rate sweeps.
 
-### Week 3. Loss functions and classification
-- **Can do:** explain a loss as a penalty chosen for the task. Write MSE and binary cross-entropy. Train logistic regression with GD. Split data into train and test and report both. Explain why accuracy misleads on imbalanced data.
-- **Source:** UDL ch5 §5.1-5.4, §5.7 (pp 56-66, 71-72). Notebooks 5.1, 5.2. Maximum likelihood is a sidebar, not an exam topic.
-- **Hands-on:** logistic regression from scratch on 2D data, decision boundary plot.
-- **Deliverable:** notebook plus exit question: 95% accuracy when 95% of the data is one class, good or not?
-- **Class adds:** loss design is objective design. A GA fitness function is a loss with a sign flip.
+### Week 3. Logistic regression and binary cross-entropy
+- **Can do:** compute `p = σ(w·x + a)` and the decision boundary `x = −a/w` by hand. Explain a loss as a penalty chosen for the task, and why BCE punishes "sure and wrong" much more than the squared error. Derive σ′ = σ(1 − σ) and follow the chain rule to ∂ℓ/∂z = p − y. Train logistic regression with GD in NumPy (one and two features), including a learning-rate sweep. Explain why accuracy misleads on imbalanced data.
+- **Source:** UDL ch5 §5.1-5.4 (pp 56-66). Maximum likelihood is a sidebar, not an exam topic.
+- **Format:** medium derivation (about 15 minutes: students derive σ′, the lead mentor does the chain rule and the cancellation), so live coding gets 55 minutes. Board: three sigmoid values by hand, the boundary, three models with the same accuracy but different BCE, the penalty table (−ln p against (1 − p)²), why MSE with a sigmoid learns slowly, the BCE gradient next to the MSE gradient, no closed form.
+- **Hands-on:** notebook with a helper cell; students write the sigmoid, BCE, the gradient (checked numerically), the GD loop, a sweep with a 300-step budget, and a two-feature version (study and sleep hours) with a boundary plot. A run-only demo: 95% accuracy that catches no fraud.
+- **Deliverable:** notebook plus two understanding questions (why train with BCE instead of accuracy; is 95% accuracy on imbalanced data good).
+- **Class adds:** loss design is objective design. A GA fitness function is a loss with a sign flip (Week 10). Train/test splits are deliberately left to Week 7.
 - **AI:** allowed.
 - **Feeds project:** metric choice.
 
@@ -111,7 +112,7 @@ Locked decisions from earlier phases: Option A (UDL + Luke), 16 teaching weeks p
 - **Feeds project:** PyTorch skeleton for team code.
 
 ### Week 7. Generalization and honest evaluation
-- **Can do:** state what train, validation and test are for. Read train/validation curves and name under- and overfitting. Explain bias and variance in plain words. Apply weight decay and early stopping. Find data leakage in a pipeline. Report precision, recall and a confusion matrix.
+- **Can do:** split data into train, validation and test (moved here from Week 3) and state what each is for. Read train/validation curves and name under- and overfitting. Explain bias and variance in plain words. Apply weight decay and early stopping. Find data leakage in a pipeline. Report precision, recall and a confusion matrix.
 - **Source:** UDL ch8 §8.1-8.3, §8.5 (pp 118-126, 132-133), ch9 §9.1-9.2 (pp 138-142). Notebooks 8.1, 8.2, 9.1, 9.2. Skip §8.4 double descent.
 - **Hands-on:** "Detektif Kebocoran": three pipelines with hidden leaks (scaling before the split, duplicate rows across splits, test-set tuning).
 - **Deliverable:** experiments notebook plus a leakage report.
